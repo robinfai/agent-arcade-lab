@@ -3,6 +3,7 @@ import 'snake_game.dart';
 import 'snake_cycle.dart';
 import 'snake_arena_assist.dart';
 import 'jev_client.dart';
+import 'unassisted.dart';
 
 class SnakePage extends StatefulWidget {
   const SnakePage({super.key});
@@ -76,7 +77,9 @@ class _SnakePageState extends State<SnakePage> {
     final active = players;
     final requests = [
       for (var i = 0; i < active.length; i++)
-        solo
+        active[i] == 2
+            ? rawSnakeRequest(game, i)
+            : solo
             ? cycle!.request(diagnostics: soloModel != 1)
             : arenaAssist.request(i),
     ];
@@ -94,7 +97,9 @@ class _SnakePageState extends State<SnakePage> {
       }
       for (var i = 0; i < results.length; i++) {
         if (results[i]['error'] != null ||
-            !(solo ? SnakeCycle.actions : ['forward', 'left', 'right'])
+            !(solo && active[i] != 2
+                    ? SnakeCycle.actions
+                    : ['forward', 'left', 'right'])
                 .contains(results[i]['choice'])) {
           throw StateError(
             '${modelNames[active[i]]} 未返回有效动作：${results[i]['error']}',
@@ -108,7 +113,7 @@ class _SnakePageState extends State<SnakePage> {
             .toList();
         if (solo) {
           proposed = choices.single;
-          if (shield) {
+          if (shield && soloModel != 2) {
             choices = [
               cycle!.executeChoice(
                 proposed,
@@ -125,7 +130,14 @@ class _SnakePageState extends State<SnakePage> {
           }
         }
         if (!solo) {
-          choices = arenaAssist.execute(choices, enabled: arenaShield);
+          choices = arenaAssist.execute(
+            choices,
+            enabled: arenaShield,
+            unassisted: {
+              for (var i = 0; i < active.length; i++)
+                if (active[i] == 2) i,
+            },
+          );
         }
         game.advance(choices);
         status = game.over ? game.result : '第 ${game.frame} 帧已同时结算';
@@ -172,7 +184,7 @@ class _SnakePageState extends State<SnakePage> {
       randomSeed ? DateTime.now().millisecondsSinceEpoch : game.seed,
       names: players.map((i) => modelNames[i]).toList(),
     );
-    cycle = solo ? SnakeCycle(game) : null;
+    cycle = solo && soloModel != 2 ? SnakeCycle(game) : null;
     arenaAssist = ArenaAssist(game);
     interventions = 0;
     proposed = '—';
@@ -252,13 +264,13 @@ class _SnakePageState extends State<SnakePage> {
                     ),
                 ],
               ),
-            const Text('JEV 将游戏局面发送至云端；密钥由本地代理读取。'),
+            const Text('JEV 固定无程序辅助：只读取原始棋盘和动作含义，无安全标签、路径规划或纠错。密钥由本地代理读取。'),
             if (solo)
               SwitchListTile(
                 title: const Text('社区循环安全层'),
                 subtitle: const Text('关闭后执行模型原始选择；切换会重开'),
-                value: shield,
-                onChanged: busy || running
+                value: soloModel == 2 ? false : shield,
+                onChanged: busy || running || soloModel == 2
                     ? null
                     : (v) {
                         shield = v;
@@ -271,16 +283,18 @@ class _SnakePageState extends State<SnakePage> {
               ),
             if (solo)
               Text(
-                soloModel != 1
+                soloModel == 2
+                    ? 'JEV 原始动作直接执行，碰撞即结束。'
+                    : soloModel != 1
                     ? '纠错按模型概率选择安全方向；每步推理，未使用预录动作。'
                     : 'Qwen 无候选概率；纠错时由程序选择安全方向中的最大路线进展。',
               ),
             if (!solo)
               SwitchListTile(
-                title: const Text('双方统一防循环辅助'),
-                subtitle: const Text('同样的避险、重复局面检测和路径搜索；切换重开'),
-                value: arenaShield,
-                onChanged: busy || running
+                title: const Text('非 JEV 模型防循环辅助'),
+                subtitle: const Text('JEV 始终跳过；其他模型使用避险、重复检测和路径搜索'),
+                value: arenaModels.every((m) => m == 2) ? false : arenaShield,
+                onChanged: busy || running || arenaModels.every((m) => m == 2)
                     ? null
                     : (v) {
                         arenaShield = v;

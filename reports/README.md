@@ -4,6 +4,8 @@
 
 ## 当前辅助机制相关
 
+- [JEV 无程序辅助 500 步上限实测](jev-unassisted/README.md)：两个游戏均提前自然结束，保留原始请求、响应及逐帧核验。
+
 - [俄罗斯方块统一辅助](tetris-uniform-assist/README.md)：原始选择、执行纠错及成绩边界。
 - [双蛇防循环辅助](snake-arena-assist/README.md)：同帧规则、路径信息、动作改写。
 - [独玩循环安全层](snake-cycle/README.md)。

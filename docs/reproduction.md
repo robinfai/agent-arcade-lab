@@ -17,7 +17,7 @@ uv pip install --python .venv/bin/python -r backend/requirements.lock.txt
 uv pip install --python .venv/bin/python --no-deps -e vendor/laya-mlx
 ```
 
-私有仓库需先配置自己的 GitHub 访问权限。`requirements.lock.txt` 固定当前主环境；`requirements.txt` 仅列顶层依赖，严格复现使用锁定文件。Kev 单独安装，避免 PyTorch/Transformers 版本冲突。
+仓库已公开，可直接克隆。`requirements.lock.txt` 固定当前主环境；`requirements.txt` 仅列顶层依赖，严格复现使用锁定文件。Kev 单独安装，避免 PyTorch/Transformers 版本冲突。
 
 子模块固定为：
 
@@ -126,6 +126,8 @@ dart run tool/benchmark_snake.dart 20260921 reports/local/snake-arena assist
 `tool/benchmark_snake_cycle.dart`、部分旧 benchmark 和汇总脚本使用固定输出路径，直接运行会覆盖历史报告。只有明确要更新基线时才使用。更多旧实验命令见 [历史记录](experiment-history.md)，不要把旧实验默认值混入当前配置。
 
 ## 6. 常见问题
+
+JEV 的无程序辅助模式、500 步测试命令与离线核验见 [实测报告](../reports/jev-unassisted/README.md)。页面选 JEV 即使用原始动作模式；贪吃蛇本次测的是单模型独玩。新评测目录必须尚不存在，避免覆盖证据。
 
 - 从旧项目原地改名后构建仍引用 `jev_tetris`：运行 `flutter clean`、`flutter pub get` 后重新构建；新克隆不包含该旧缓存。
 - 找不到 `laya_mlx`/`kev`：核对子模块初始化、所用 Python 环境和安装命令。

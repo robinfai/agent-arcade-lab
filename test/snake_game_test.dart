@@ -70,6 +70,10 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.textContaining('青色 JEV · 云端'), findsOneWidget);
       expect(find.textContaining('黄色 JEV · 云端'), findsNothing);
+      final shield = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
+      expect(shield.value, false);
+      expect(shield.onChanged, isNull);
+      expect(find.text('JEV 原始动作直接执行，碰撞即结束。'), findsOneWidget);
       await tester.tap(find.text('多模型竞技'));
       await tester.pump();
       expect(find.textContaining('青色 JEV · 云端'), findsOneWidget);

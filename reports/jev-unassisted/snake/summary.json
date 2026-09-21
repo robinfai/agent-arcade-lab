@@ -1,0 +1,45 @@
+{
+  "game": "snake",
+  "mode": "raw-observation-single-action",
+  "seed": 20260921,
+  "step_limit": 500,
+  "started_at": "2026-09-21T03:27:47.728803Z",
+  "model": "jev-1.13.0",
+  "decisions": 9,
+  "executed_steps": 9,
+  "invalid_actions": 0,
+  "corrections": 0,
+  "program_assistance": false,
+  "score": 0,
+  "over": true,
+  "end_reason": "collision",
+  "survived_500_steps": false,
+  "elapsed_seconds": 7.093,
+  "error": null,
+  "final_state": {
+    "body": [
+      [
+        11,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        5
+      ]
+    ],
+    "heading": 1,
+    "food": [
+      5,
+      4
+    ],
+    "frame": 9,
+    "score": 0,
+    "alive": false,
+    "over": true,
+    "result": "JEV 游戏结束 · 碰撞失败"
+  }
+}

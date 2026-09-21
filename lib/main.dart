@@ -9,6 +9,7 @@ import 'assisted_player.dart';
 import 'assisted_planner.dart';
 import 'snake_page.dart';
 import 'tetris_assist.dart';
+import 'unassisted.dart';
 
 void main() => runApp(const TetrisApp());
 const colors = [
@@ -330,7 +331,13 @@ class _GamePageState extends State<GamePage> {
   }
 
   Future<void> directLand() async {
-    if (busy || running || game.over || replayBoard != null) return;
+    if (busy ||
+        running ||
+        game.over ||
+        replayBoard != null ||
+        selectedModel == 'jev') {
+      return;
+    }
     final generation = epoch;
     final directApi = JevClient(api.baseUrl, endpoint: '/v1/land-decision');
     setState(() {
@@ -378,10 +385,14 @@ class _GamePageState extends State<GamePage> {
     final generation = epoch;
     setState(() {
       busy = true;
-      status = '正在准备方案 · 模型选择落点，程序逐格执行…';
+      status = selectedModel == 'jev'
+          ? 'JEV 正在读取棋盘并选择一个原始动作…'
+          : '正在准备方案 · 模型选择落点，程序逐格执行…';
     });
     try {
-      final data = await assistedPlayer.decide(game);
+      final data = selectedModel == 'jev'
+          ? await decideRawTetris(api, game)
+          : await assistedPlayer.decide(game);
       if (!mounted || generation != epoch) return;
       if (data['error'] != null) throw StateError(data['error']);
       final plan = List<String>.from(data['actions']);
@@ -392,8 +403,9 @@ class _GamePageState extends State<GamePage> {
         modelName = data['model'] as String;
         latency = data['_http_ms'];
         confidence = null;
-        lastChoice =
-            '目标列 ${data['predicted_outcome']['column']} / 旋转 ${data['predicted_outcome']['rotation']} / 预计消 ${data['predicted_outcome']['lines_cleared']} 行\n本批：${plan.join(' → ')}';
+        lastChoice = selectedModel == 'jev'
+            ? '原始动作：${data['choice']}'
+            : '目标列 ${data['predicted_outcome']['column']} / 旋转 ${data['predicted_outcome']['rotation']} / 预计消 ${data['predicted_outcome']['lines_cleared']} 行\n本批：${plan.join(' → ')}';
       });
       while (mounted && generation == epoch && execution.advance()) {
         setState(
@@ -405,7 +417,7 @@ class _GamePageState extends State<GamePage> {
         }
       }
       if (!mounted || generation != epoch) return;
-      assistedPlayer.observe(game, execution);
+      if (selectedModel != 'jev') assistedPlayer.observe(game, execution);
       setState(() {
         history.insert(0, {
           'step': turns,
@@ -421,6 +433,9 @@ class _GamePageState extends State<GamePage> {
             : execution.stopReason == 'piece_locked'
             ? '方块已锁定 · 剩余序列已取消'
             : '回合 $turns 完成 · ${execution.executed} 步';
+        if (selectedModel == 'jev' && execution.executed == 0) {
+          tetrisDecision = '原始：${data['choice']} → 未执行：动作受阻；无替代动作';
+        }
         if (game.over || execution.executed == 0) running = false;
       });
     } catch (e) {
@@ -746,7 +761,11 @@ class _GamePageState extends State<GamePage> {
                                       child: const Text('AI 一回合'),
                                     ),
                                     OutlinedButton(
-                                      onPressed: busy || running || game.over
+                                      onPressed:
+                                          busy ||
+                                              running ||
+                                              game.over ||
+                                              selectedModel == 'jev'
                                           ? null
                                           : directLand,
                                       child: const Text('AI 直接落位'),
@@ -784,12 +803,19 @@ class _GamePageState extends State<GamePage> {
                                   color: Colors.transparent,
                                   child: SwitchListTile(
                                     title: const Text('统一落点辅助'),
-                                    subtitle: const Text(
-                                      '所有模型使用相同候选评价与纠错；关闭只停用动作改写',
+                                    subtitle: Text(
+                                      selectedModel == 'jev'
+                                          ? 'JEV 固定无辅助：原始棋盘、单步动作，无落点规划或纠错'
+                                          : '本地模型与 DeepSeek 使用候选评价；关闭只停用动作改写',
                                     ),
-                                    value: tetrisShield,
+                                    value: selectedModel == 'jev'
+                                        ? false
+                                        : tetrisShield,
                                     onChanged:
-                                        busy || running || replayBoard != null
+                                        busy ||
+                                            running ||
+                                            replayBoard != null ||
+                                            selectedModel == 'jev'
                                         ? null
                                         : (v) => setState(() {
                                             tetrisShield = v;
@@ -807,8 +833,10 @@ class _GamePageState extends State<GamePage> {
                                 ),
                                 Text('计划 $lastChoice'),
                                 const SizedBox(height: 8),
-                                const Text(
-                                  '程序枚举全部可达落点并预测结果；Laya / Kev / JEV 直接输出候选概率，其他模型用工具选择。所有模型收到相同的程序落点评价；辅助开启时按存活、消行、空洞、高度、起伏顺序纠错，不使用模型概率。每批最多执行 8 步，同一方块沿用选定方案；锁定后重新选择。辅助模式关闭长思考，0 ms 表示续执行，无新模型请求。',
+                                Text(
+                                  selectedModel == 'jev'
+                                      ? 'JEV 每次只接收原始棋盘、规则及动作含义；不枚举落点，不预测或排序结果，不纠错。AI 直接落位禁用，模型仍可自行选择 hard_drop。动作受阻时暂停，不替换动作。'
+                                      : '程序枚举全部可达落点并预测结果；Laya / Kev 直接输出候选概率，其他模型用工具选择。所有模型收到相同的程序落点评价；辅助开启时按存活、消行、空洞、高度、起伏顺序纠错，不使用模型概率。每批最多执行 8 步，同一方块沿用选定方案；锁定后重新选择。辅助模式关闭长思考，0 ms 表示续执行，无新模型请求。',
                                   style: TextStyle(
                                     color: Colors.white54,
                                     height: 1.6,

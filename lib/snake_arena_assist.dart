@@ -118,7 +118,11 @@ class ArenaAssist {
     return req;
   }
 
-  List<String> execute(List<String> proposals, {bool enabled = true}) {
+  List<String> execute(
+    List<String> proposals, {
+    bool enabled = true,
+    Set<int> unassisted = const {},
+  }) {
     if (proposals.length != 2 ||
         proposals.any((a) => !['forward', 'left', 'right'].contains(a))) {
       throw ArgumentError('Invalid actions');
@@ -128,6 +132,10 @@ class ArenaAssist {
     // Both decisions use the unchanged frame; neither model gets privileged treatment.
     for (var i = 0; i < 2; i++) {
       reasons[i] = '原样执行';
+      if (unassisted.contains(i)) {
+        reasons[i] = 'JEV 无程序辅助';
+        continue;
+      }
       final opts = options(i),
           original = opts.firstWhere((o) => o.action == proposals[i]);
       final best = opts.reduce((a, b) => compare(a, b) <= 0 ? a : b);
