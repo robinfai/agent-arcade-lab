@@ -58,3 +58,6 @@ __pycache__/
 *.key
 # New experiments are kept separate from committed reference data.
 /reports/local/
+
+# Local agent workspace configuration
+.serena/
