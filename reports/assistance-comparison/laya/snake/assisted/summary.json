@@ -1,0 +1,134 @@
+{
+  "label": "laya",
+  "game": "snake",
+  "mode": "assisted",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "started_at": "2026-09-21T03:39:07.782787Z",
+  "model": "aac6fef/laya-multilingual-mlx",
+  "steps": 500,
+  "score": 210,
+  "over": false,
+  "end_reason": "step_cap",
+  "error": null,
+  "requests": 500,
+  "corrections": 1,
+  "candidate_comparisons": 500,
+  "preferred_proposals": 464,
+  "invalid_actions": 0,
+  "input_tokens": 30794,
+  "output_tokens": 0,
+  "mean_http_ms": 13.79396200000001,
+  "elapsed_seconds": 7.078,
+  "final_state": {
+    "body": [
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "heading": 0,
+    "food": [
+      10,
+      1
+    ],
+    "frame": 500,
+    "score": 210,
+    "alive": true,
+    "over": false
+  }
+}

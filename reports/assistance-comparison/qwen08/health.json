@@ -1,0 +1,6 @@
+{
+  "ready": true,
+  "model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "backend": "mlx",
+  "load_ms": 854.9346670042723
+}

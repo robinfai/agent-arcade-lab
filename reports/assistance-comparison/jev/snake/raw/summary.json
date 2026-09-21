@@ -1,0 +1,54 @@
+{
+  "label": "jev",
+  "game": "snake",
+  "mode": "raw",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "started_at": "2026-09-21T03:39:37.551178Z",
+  "model": "jev-1.13.0",
+  "steps": 43,
+  "score": 10,
+  "over": true,
+  "end_reason": "collision",
+  "error": null,
+  "requests": 43,
+  "corrections": 0,
+  "candidate_comparisons": 0,
+  "preferred_proposals": 0,
+  "invalid_actions": 0,
+  "input_tokens": 25084,
+  "output_tokens": 1935,
+  "mean_http_ms": 776.0472558139535,
+  "elapsed_seconds": 33.409,
+  "final_state": {
+    "body": [
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        3
+      ]
+    ],
+    "heading": 0,
+    "food": [
+      5,
+      0
+    ],
+    "frame": 43,
+    "score": 10,
+    "alive": false,
+    "over": true
+  }
+}

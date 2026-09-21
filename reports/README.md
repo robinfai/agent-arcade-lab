@@ -4,6 +4,8 @@
 
 ## 当前辅助机制相关
 
+- [六模型 × 双游戏：有无程序辅助对照](assistance-comparison/README.md)：500 步上限、纯程序基线、纠错计数与归因边界。
+
 - [JEV 无程序辅助 500 步上限实测](jev-unassisted/README.md)：两个游戏均提前自然结束，保留原始请求、响应及逐帧核验。
 
 - [俄罗斯方块统一辅助](tetris-uniform-assist/README.md)：原始选择、执行纠错及成绩边界。

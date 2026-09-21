@@ -1,0 +1,153 @@
+{
+  "label": "kev",
+  "game": "snake",
+  "mode": "assisted",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "explicit_tool_instruction": false,
+  "tool_output_name": "place_piece",
+  "endpoint": "/v1/tool-decision",
+  "started_at": "2026-09-21T03:55:48.269413Z",
+  "model": "jaredpalmer/kev-4b",
+  "steps": 500,
+  "score": 250,
+  "over": false,
+  "end_reason": "step_cap",
+  "error": null,
+  "requests": 500,
+  "corrections": 10,
+  "candidate_comparisons": 500,
+  "preferred_proposals": 490,
+  "invalid_actions": 0,
+  "input_tokens": 31328,
+  "output_tokens": 31917,
+  "mean_http_ms": 191.21678200000008,
+  "elapsed_seconds": 95.81,
+  "final_state": {
+    "body": [
+      [
+        4,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        11
+      ]
+    ],
+    "heading": 1,
+    "food": [
+      7,
+      3
+    ],
+    "frame": 500,
+    "score": 250,
+    "alive": true,
+    "over": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "label": "qwen08",
+  "game": "snake",
+  "mode": "raw",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "explicit_tool_instruction": true,
+  "tool_output_name": "snake_move",
+  "endpoint": "/v1/snake-decision",
+  "started_at": "2026-09-21T03:46:41.558753Z",
+  "model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "steps": 7,
+  "score": 0,
+  "over": true,
+  "end_reason": "collision",
+  "error": null,
+  "requests": 7,
+  "corrections": 0,
+  "candidate_comparisons": 0,
+  "preferred_proposals": 0,
+  "invalid_actions": 0,
+  "input_tokens": 4123,
+  "output_tokens": 196,
+  "mean_http_ms": 709.0177142857144,
+  "elapsed_seconds": 4.98,
+  "final_state": {
+    "body": [
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        6,
+        2
+      ]
+    ],
+    "heading": 0,
+    "food": [
+      10,
+      3
+    ],
+    "frame": 7,
+    "score": 0,
+    "alive": false,
+    "over": true
+  }
+}

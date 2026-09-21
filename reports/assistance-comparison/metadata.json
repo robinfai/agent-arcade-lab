@@ -1,0 +1,59 @@
+{
+  "source_commit": "dd3142bad481be22f22972dc6f9e88c5c5803086",
+  "seed": 20260921,
+  "step_cap": 500,
+  "models": {
+    "laya": {
+      "weights": "aac6fef/laya-multilingual-mlx",
+      "revision": "ba40c87fcb357f1643d04d71323af9cdc3b9e591"
+    },
+    "qwen08": {
+      "weights": "mlx-community/Qwen3.5-0.8B-4bit",
+      "revision": "da28692b5f139cb0ec58a356b437486b7dac7462"
+    },
+    "qwen4": {
+      "weights": "mlx-community/Qwen3.5-4B-4bit",
+      "revision": "0e7ffd5c629ef7719d4cbc04069232580bfa9d9c"
+    },
+    "kev": {
+      "weights": "jaredpalmer/kev-4b",
+      "revision": "2bd3bb9a9957aff9a4803be7ce91a521cdff0a31",
+      "base_revision_pinned_by_adapter": false
+    },
+    "deepseek": {
+      "alias": "deepseek-flash",
+      "revision": null
+    },
+    "jev": {
+      "alias": "jev-latest",
+      "observed_version": "jev-1.13.0",
+      "revision": null
+    }
+  },
+  "frontend_defaults_changed": false,
+  "scope": "Single-seed paired benchmark using actual models and the shared Dart engine; not browser E2E.",
+  "warnings": [
+    "Concurrent runs: latency is not a controlled speed comparison.",
+    "Output format checks are archived separately from completed game trials.",
+    "Snake absolute directions and cycle-aligned starting fixture differ from the earlier JEV-only relative-direction trial."
+  ],
+  "benchmark_file_sha256": {
+    "tool/benchmark_assistance.dart": "7b48632c433432442c15bb42a70de53e3ec0cfaf0ad7cbaaab8a2e0fe11a66c5",
+    "tool/verify_assistance.dart": "8b026da37fdbd43a022b5879ba75cfe97924f7672fbe7070ca6ea00fd25755c9",
+    "lib/unassisted.dart": "13337a67f220e2a35f057522f20eff19df9a5e2e811beca41d82e46e6eebd204",
+    "lib/game.dart": "1d482ee61145c78183bd12941910bb507a8a2b988b59d509d15a179961f28d2b",
+    "lib/snake_cycle.dart": "82785ee1591d8939539f3dd404f4b3d8ac9325eeaab4eaf45bc0b3d36e29edc9",
+    "lib/snake_game.dart": "78ce03e79041a6d8b51ff19fb3f28fcfd80c515a066da6a02a9cf9048eb23d3a",
+    "lib/tetris_assist.dart": "525adf05a70e770d938361d03c56b45c1f7cdc1babb141e26ac268730bedb0e9",
+    "lib/assisted_planner.dart": "54deb56843e04ee2c487c2b04c3be7401c00e063cbbca11a7948ede4280e07bf"
+  },
+  "validation": {
+    "flutter_analyze": "passed",
+    "flutter_tests": 53,
+    "flutter_build_web": "passed",
+    "offline_replay_runs_including_protocol_checks": 32,
+    "offline_replayed_actions": 6957,
+    "canonical_runs_including_program_baselines": 26,
+    "canonical_actions": 6950
+  }
+}

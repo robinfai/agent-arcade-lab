@@ -8,6 +8,8 @@
 
 JEV 现使用独立的无程序辅助路径：只接收原始棋盘和固定动作含义，没有结果预测、最佳标签、路径搜索或执行纠错。参见 [500 步上限实测](reports/jev-unassisted/README.md)。其他模型保留原有辅助。
 
+六种模型在两个游戏中的有无辅助单局对照、纯程序基线及贡献分析，见 [程序辅助对照报告](reports/assistance-comparison/README.md)。每局严格限制 500 步，协议中断与游戏死亡分别记录。
+
 ## 快速开始
 
 已验证开发环境：Apple Silicon macOS、Flutter 3.44.0 / Dart 3.12.0、Python 3.12.13、uv。仅启动界面无需模型；本地 MLX 推理需要 Apple Silicon。

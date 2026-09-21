@@ -1,0 +1,7 @@
+{
+  "ready": true,
+  "model": "deepseek-flash",
+  "key_configured": true,
+  "thinking": "disabled",
+  "reasoning_effort": "high"
+}

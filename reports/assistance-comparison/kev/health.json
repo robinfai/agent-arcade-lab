@@ -1,0 +1,8 @@
+{
+  "ready": true,
+  "model": "jaredpalmer/kev-4b",
+  "backend": "pytorch",
+  "device": "mps",
+  "dtype": "bf16",
+  "revision": "2bd3bb9a9957aff9a4803be7ce91a521cdff0a31"
+}

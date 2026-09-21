@@ -1,0 +1,50 @@
+{
+  "label": "qwen08",
+  "game": "snake",
+  "mode": "raw",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "started_at": "2026-09-21T03:39:31.822142Z",
+  "model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "steps": 0,
+  "score": 0,
+  "over": false,
+  "end_reason": "invalid_response",
+  "error": "invalid_tool_format",
+  "requests": 1,
+  "corrections": 0,
+  "candidate_comparisons": 0,
+  "preferred_proposals": 0,
+  "invalid_actions": 0,
+  "input_tokens": 572,
+  "output_tokens": 128,
+  "mean_http_ms": 631.435,
+  "elapsed_seconds": 0.64,
+  "final_state": {
+    "body": [
+      [
+        6,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "heading": 1,
+    "food": [
+      10,
+      3
+    ],
+    "frame": 0,
+    "score": 0,
+    "alive": true,
+    "over": false
+  }
+}

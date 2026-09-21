@@ -1,0 +1,50 @@
+{
+  "label": "laya",
+  "game": "snake",
+  "mode": "raw",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "started_at": "2026-09-21T03:39:06.495946Z",
+  "model": "aac6fef/laya-multilingual-mlx",
+  "steps": 1,
+  "score": 0,
+  "over": true,
+  "end_reason": "collision",
+  "error": null,
+  "requests": 1,
+  "corrections": 0,
+  "candidate_comparisons": 0,
+  "preferred_proposals": 0,
+  "invalid_actions": 0,
+  "input_tokens": 276,
+  "output_tokens": 0,
+  "mean_http_ms": 87.876,
+  "elapsed_seconds": 0.098,
+  "final_state": {
+    "body": [
+      [
+        6,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "heading": 3,
+    "food": [
+      10,
+      3
+    ],
+    "frame": 1,
+    "score": 0,
+    "alive": false,
+    "over": true
+  }
+}

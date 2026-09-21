@@ -1,0 +1,53 @@
+{
+  "label": "kev",
+  "game": "snake",
+  "mode": "raw",
+  "seed": 20260921,
+  "max_steps": 500,
+  "max_requests": 500,
+  "max_seconds": 900,
+  "explicit_tool_instruction": false,
+  "tool_output_name": "place_piece",
+  "endpoint": "/v1/tool-decision",
+  "started_at": "2026-09-21T03:55:43.240095Z",
+  "model": "jaredpalmer/kev-4b",
+  "steps": 6,
+  "score": 0,
+  "over": true,
+  "end_reason": "collision",
+  "error": null,
+  "requests": 6,
+  "corrections": 0,
+  "candidate_comparisons": 0,
+  "preferred_proposals": 0,
+  "invalid_actions": 0,
+  "input_tokens": 1659,
+  "output_tokens": 383,
+  "mean_http_ms": 650.3158333333333,
+  "elapsed_seconds": 3.913,
+  "final_state": {
+    "body": [
+      [
+        11,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        9,
+        6
+      ]
+    ],
+    "heading": 1,
+    "food": [
+      10,
+      3
+    ],
+    "frame": 6,
+    "score": 0,
+    "alive": false,
+    "over": true
+  }
+}
