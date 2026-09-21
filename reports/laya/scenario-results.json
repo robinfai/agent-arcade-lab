@@ -1,0 +1,1104 @@
+[
+  {
+    "variant": "baseline",
+    "name": "fill_bottom_left",
+    "expected_lines": 1,
+    "selected_outcome": {
+      "column": 4,
+      "rotation": 1,
+      "row": 15,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 10,
+      "max_height": 5,
+      "roughness": 9,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.9551,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.9793,
+            "p1": 0.0012,
+            "p2": 0.004,
+            "p3": 0.0,
+            "p4": 0.0122,
+            "p5": 0.0004,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0,
+            "p10": 0.0022,
+            "p11": 0.0,
+            "p12": 0.0001,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0004
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 518,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.9551,
+      "probabilities": {
+        "p0": 0.9793,
+        "p1": 0.0012,
+        "p2": 0.004,
+        "p3": 0.0,
+        "p4": 0.0122,
+        "p5": 0.0004,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0,
+        "p10": 0.0022,
+        "p11": 0.0,
+        "p12": 0.0001,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0004
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 798.1985419755802,
+      "generated_tokens": 0,
+      "prompt_variant": "baseline",
+      "input_budget": {
+        "input_tokens": 518,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 390,
+        "max_len": 519,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best Tetris placement to score points and survive.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p1": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p2": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p3": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p4": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p5": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 5",
+              "p6": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 7",
+              "p7": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p8": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p9": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 5",
+              "p10": "safe; clear 0; holes 1; peak 2; total height 11; unevenness 3",
+              "p11": "safe; clear 0; holes 2; peak 2; total height 12; unevenness 3",
+              "p12": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p13": "safe; clear 0; holes 3; peak 2; total height 13; unevenness 3",
+              "p14": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p15": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 2",
+              "p16": "safe; clear 1; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "baseline",
+    "name": "fill_bottom_right",
+    "expected_lines": 1,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 1,
+      "row": 15,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 10,
+      "max_height": 5,
+      "roughness": 9,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.98,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.992,
+            "p1": 0.0008,
+            "p2": 0.0009,
+            "p3": 0.0001,
+            "p4": 0.005,
+            "p5": 0.0001,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0,
+            "p10": 0.0009,
+            "p11": 0.0,
+            "p12": 0.0,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0003
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 518,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.98,
+      "probabilities": {
+        "p0": 0.992,
+        "p1": 0.0008,
+        "p2": 0.0009,
+        "p3": 0.0001,
+        "p4": 0.005,
+        "p5": 0.0001,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0,
+        "p10": 0.0009,
+        "p11": 0.0,
+        "p12": 0.0,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0003
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 92.30333298910409,
+      "generated_tokens": 0,
+      "prompt_variant": "baseline",
+      "input_budget": {
+        "input_tokens": 518,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 390,
+        "max_len": 519,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best Tetris placement to score points and survive.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p1": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p2": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p3": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p4": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p5": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 5",
+              "p6": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 7",
+              "p7": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p8": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p9": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 5",
+              "p10": "safe; clear 0; holes 1; peak 2; total height 11; unevenness 3",
+              "p11": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p12": "safe; clear 0; holes 2; peak 2; total height 12; unevenness 3",
+              "p13": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p14": "safe; clear 0; holes 3; peak 2; total height 13; unevenness 3",
+              "p15": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 2",
+              "p16": "safe; clear 1; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "baseline",
+    "name": "square_completes_two_rows",
+    "expected_lines": 2,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 0,
+      "row": 16,
+      "lines_cleared": 0,
+      "holes_after": 2,
+      "height_sum": 22,
+      "max_height": 4,
+      "roughness": 8,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.0729,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.2289,
+            "p1": 0.1864,
+            "p2": 0.1052,
+            "p3": 0.0675,
+            "p4": 0.1209,
+            "p5": 0.0484,
+            "p6": 0.093,
+            "p7": 0.0209,
+            "p8": 0.1289
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 342,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.0729,
+      "probabilities": {
+        "p0": 0.2289,
+        "p1": 0.1864,
+        "p2": 0.1052,
+        "p3": 0.0675,
+        "p4": 0.1209,
+        "p5": 0.0484,
+        "p6": 0.093,
+        "p7": 0.0209,
+        "p8": 0.1289
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 91.5316249593161,
+      "generated_tokens": 0,
+      "prompt_variant": "baseline",
+      "input_budget": {
+        "input_tokens": 342,
+        "options": 9,
+        "max_option_tokens": 21,
+        "head_max_len": 214,
+        "max_len": 343,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece O; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best Tetris placement to score points and survive.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 2; peak 4; total height 22; unevenness 8",
+              "p1": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p2": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p3": "safe; clear 0; holes 2; peak 4; total height 22; unevenness 8",
+              "p4": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 6",
+              "p5": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p6": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p7": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 6",
+              "p8": "safe; clear 2; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "baseline",
+    "name": "rotate_into_four_row_well",
+    "expected_lines": 4,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 1,
+      "row": 12,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 40,
+      "max_height": 8,
+      "roughness": 16,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.995,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.9983,
+            "p1": 0.0001,
+            "p2": 0.0001,
+            "p3": 0.0,
+            "p4": 0.0013,
+            "p5": 0.0,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0,
+            "p10": 0.0001,
+            "p11": 0.0,
+            "p12": 0.0,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 518,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.995,
+      "probabilities": {
+        "p0": 0.9983,
+        "p1": 0.0001,
+        "p2": 0.0001,
+        "p3": 0.0,
+        "p4": 0.0013,
+        "p5": 0.0,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0,
+        "p10": 0.0001,
+        "p11": 0.0,
+        "p12": 0.0,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 91.40408301027492,
+      "generated_tokens": 0,
+      "prompt_variant": "baseline",
+      "input_budget": {
+        "input_tokens": 518,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 390,
+        "max_len": 519,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best Tetris placement to score points and survive.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p1": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p2": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p3": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p4": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 12",
+              "p5": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p6": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p7": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p8": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 12",
+              "p9": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 10",
+              "p10": "safe; clear 0; holes 4; peak 5; total height 44; unevenness 2",
+              "p11": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 10",
+              "p12": "safe; clear 0; holes 4; peak 5; total height 44; unevenness 2",
+              "p13": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 10",
+              "p14": "safe; clear 0; holes 4; peak 5; total height 44; unevenness 1",
+              "p15": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 9",
+              "p16": "safe; clear 4; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "baseline",
+    "name": "rotate_and_move_right_for_three_rows",
+    "expected_lines": 3,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 1,
+      "row": 13,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 31,
+      "max_height": 7,
+      "roughness": 14,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.9549,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.9798,
+            "p1": 0.0081,
+            "p2": 0.0026,
+            "p3": 0.0,
+            "p4": 0.0066,
+            "p5": 0.0002,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0004,
+            "p10": 0.002,
+            "p11": 0.0001,
+            "p12": 0.0001,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 518,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.9549,
+      "probabilities": {
+        "p0": 0.9798,
+        "p1": 0.0081,
+        "p2": 0.0026,
+        "p3": 0.0,
+        "p4": 0.0066,
+        "p5": 0.0002,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0004,
+        "p10": 0.002,
+        "p11": 0.0001,
+        "p12": 0.0001,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 90.91337496647611,
+      "generated_tokens": 0,
+      "prompt_variant": "baseline",
+      "input_budget": {
+        "input_tokens": 518,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 390,
+        "max_len": 519,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best Tetris placement to score points and survive.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p1": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p2": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p3": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p4": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p5": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 10",
+              "p6": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p7": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p8": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 10",
+              "p9": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 8",
+              "p10": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 8",
+              "p11": "safe; clear 0; holes 3; peak 4; total height 34; unevenness 2",
+              "p12": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 8",
+              "p13": "safe; clear 0; holes 3; peak 4; total height 34; unevenness 2",
+              "p14": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 7",
+              "p15": "safe; clear 0; holes 3; peak 4; total height 34; unevenness 1",
+              "p16": "safe; clear 3; holes 0; peak 1; total height 1; unevenness 2"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "guided",
+    "name": "fill_bottom_left",
+    "expected_lines": 1,
+    "selected_outcome": {
+      "column": 4,
+      "rotation": 1,
+      "row": 15,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 10,
+      "max_height": 5,
+      "roughness": 9,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.9207,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.9464,
+            "p1": 0.0013,
+            "p2": 0.0015,
+            "p3": 0.0,
+            "p4": 0.0504,
+            "p5": 0.0001,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0,
+            "p10": 0.0003,
+            "p11": 0.0,
+            "p12": 0.0,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 555,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.9207,
+      "probabilities": {
+        "p0": 0.9464,
+        "p1": 0.0013,
+        "p2": 0.0015,
+        "p3": 0.0,
+        "p4": 0.0504,
+        "p5": 0.0001,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0,
+        "p10": 0.0003,
+        "p11": 0.0,
+        "p12": 0.0,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 92.86170802079141,
+      "generated_tokens": 0,
+      "prompt_variant": "guided",
+      "input_budget": {
+        "input_tokens": 555,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 426,
+        "max_len": 555,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose a placement. First avoid losing. Then maximize cleared rows. For equal clears minimize holes, then peak height, total height, and unevenness. A full 10-cell row disappears and scores. Losing is failure, not victory.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p1": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p2": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p3": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p4": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p5": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 5",
+              "p6": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 7",
+              "p7": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p8": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p9": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 5",
+              "p10": "safe; clear 0; holes 1; peak 2; total height 11; unevenness 3",
+              "p11": "safe; clear 0; holes 2; peak 2; total height 12; unevenness 3",
+              "p12": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p13": "safe; clear 0; holes 3; peak 2; total height 13; unevenness 3",
+              "p14": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p15": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 2",
+              "p16": "safe; clear 1; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "guided",
+    "name": "fill_bottom_right",
+    "expected_lines": 1,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 1,
+      "row": 15,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 10,
+      "max_height": 5,
+      "roughness": 9,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.9394,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.9621,
+            "p1": 0.001,
+            "p2": 0.0008,
+            "p3": 0.0,
+            "p4": 0.0358,
+            "p5": 0.0,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0,
+            "p10": 0.0002,
+            "p11": 0.0,
+            "p12": 0.0,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 555,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.9394,
+      "probabilities": {
+        "p0": 0.9621,
+        "p1": 0.001,
+        "p2": 0.0008,
+        "p3": 0.0,
+        "p4": 0.0358,
+        "p5": 0.0,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0,
+        "p10": 0.0002,
+        "p11": 0.0,
+        "p12": 0.0,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 93.39983301470056,
+      "generated_tokens": 0,
+      "prompt_variant": "guided",
+      "input_budget": {
+        "input_tokens": 555,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 426,
+        "max_len": 555,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose a placement. First avoid losing. Then maximize cleared rows. For equal clears minimize holes, then peak height, total height, and unevenness. A full 10-cell row disappears and scores. Losing is failure, not victory.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p1": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p2": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p3": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p4": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 9",
+              "p5": "safe; clear 0; holes 0; peak 5; total height 10; unevenness 5",
+              "p6": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 7",
+              "p7": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p8": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 9",
+              "p9": "safe; clear 0; holes 0; peak 4; total height 10; unevenness 5",
+              "p10": "safe; clear 0; holes 1; peak 2; total height 11; unevenness 3",
+              "p11": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p12": "safe; clear 0; holes 2; peak 2; total height 12; unevenness 3",
+              "p13": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 3",
+              "p14": "safe; clear 0; holes 3; peak 2; total height 13; unevenness 3",
+              "p15": "safe; clear 0; holes 0; peak 2; total height 10; unevenness 2",
+              "p16": "safe; clear 1; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "guided",
+    "name": "square_completes_two_rows",
+    "expected_lines": 2,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 0,
+      "row": 16,
+      "lines_cleared": 0,
+      "holes_after": 2,
+      "height_sum": 22,
+      "max_height": 4,
+      "roughness": 8,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.095,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.2616,
+            "p1": 0.1894,
+            "p2": 0.1075,
+            "p3": 0.0538,
+            "p4": 0.1267,
+            "p5": 0.0468,
+            "p6": 0.083,
+            "p7": 0.0154,
+            "p8": 0.1157
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 379,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.095,
+      "probabilities": {
+        "p0": 0.2616,
+        "p1": 0.1894,
+        "p2": 0.1075,
+        "p3": 0.0538,
+        "p4": 0.1267,
+        "p5": 0.0468,
+        "p6": 0.083,
+        "p7": 0.0154,
+        "p8": 0.1157
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 64.29854198358953,
+      "generated_tokens": 0,
+      "prompt_variant": "guided",
+      "input_budget": {
+        "input_tokens": 379,
+        "options": 9,
+        "max_option_tokens": 21,
+        "head_max_len": 250,
+        "max_len": 379,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece O; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose a placement. First avoid losing. Then maximize cleared rows. For equal clears minimize holes, then peak height, total height, and unevenness. A full 10-cell row disappears and scores. Losing is failure, not victory.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 2; peak 4; total height 22; unevenness 8",
+              "p1": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p2": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p3": "safe; clear 0; holes 2; peak 4; total height 22; unevenness 8",
+              "p4": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 6",
+              "p5": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p6": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 8",
+              "p7": "safe; clear 0; holes 0; peak 4; total height 20; unevenness 6",
+              "p8": "safe; clear 2; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "guided",
+    "name": "rotate_into_four_row_well",
+    "expected_lines": 4,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 1,
+      "row": 12,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 40,
+      "max_height": 8,
+      "roughness": 16,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.825,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.8149,
+            "p1": 0.0009,
+            "p2": 0.0006,
+            "p3": 0.0,
+            "p4": 0.1827,
+            "p5": 0.0,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0,
+            "p10": 0.0006,
+            "p11": 0.0,
+            "p12": 0.0001,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 555,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.825,
+      "probabilities": {
+        "p0": 0.8149,
+        "p1": 0.0009,
+        "p2": 0.0006,
+        "p3": 0.0,
+        "p4": 0.1827,
+        "p5": 0.0,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0,
+        "p10": 0.0006,
+        "p11": 0.0,
+        "p12": 0.0001,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 93.27470802236348,
+      "generated_tokens": 0,
+      "prompt_variant": "guided",
+      "input_budget": {
+        "input_tokens": 555,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 426,
+        "max_len": 555,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose a placement. First avoid losing. Then maximize cleared rows. For equal clears minimize holes, then peak height, total height, and unevenness. A full 10-cell row disappears and scores. Losing is failure, not victory.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p1": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p2": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p3": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p4": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 12",
+              "p5": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p6": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p7": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 16",
+              "p8": "safe; clear 0; holes 0; peak 8; total height 40; unevenness 12",
+              "p9": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 10",
+              "p10": "safe; clear 0; holes 4; peak 5; total height 44; unevenness 2",
+              "p11": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 10",
+              "p12": "safe; clear 0; holes 4; peak 5; total height 44; unevenness 2",
+              "p13": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 10",
+              "p14": "safe; clear 0; holes 4; peak 5; total height 44; unevenness 1",
+              "p15": "safe; clear 0; holes 0; peak 5; total height 40; unevenness 9",
+              "p16": "safe; clear 4; holes 0; peak 0; total height 0; unevenness 0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "variant": "guided",
+    "name": "rotate_and_move_right_for_three_rows",
+    "expected_lines": 3,
+    "selected_outcome": {
+      "column": 3,
+      "rotation": 1,
+      "row": 13,
+      "lines_cleared": 0,
+      "holes_after": 0,
+      "height_sum": 31,
+      "max_height": 7,
+      "roughness": 14,
+      "game_over": false
+    },
+    "passed": false,
+    "response": {
+      "model": "aac6fef/laya-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.9017,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p0",
+          "probabilities": {
+            "p0": 0.94,
+            "p1": 0.0145,
+            "p2": 0.0029,
+            "p3": 0.0,
+            "p4": 0.0414,
+            "p5": 0.0001,
+            "p6": 0.0,
+            "p7": 0.0,
+            "p8": 0.0,
+            "p9": 0.0002,
+            "p10": 0.0005,
+            "p11": 0.0003,
+            "p12": 0.0001,
+            "p13": 0.0,
+            "p14": 0.0,
+            "p15": 0.0,
+            "p16": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 555,
+        "output_tokens": 0
+      },
+      "choice": "p0",
+      "confidence": 0.9017,
+      "probabilities": {
+        "p0": 0.94,
+        "p1": 0.0145,
+        "p2": 0.0029,
+        "p3": 0.0,
+        "p4": 0.0414,
+        "p5": 0.0001,
+        "p6": 0.0,
+        "p7": 0.0,
+        "p8": 0.0,
+        "p9": 0.0002,
+        "p10": 0.0005,
+        "p11": 0.0003,
+        "p12": 0.0001,
+        "p13": 0.0,
+        "p14": 0.0,
+        "p15": 0.0,
+        "p16": 0.0
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 94.06925004441291,
+      "generated_tokens": 0,
+      "prompt_variant": "guided",
+      "input_budget": {
+        "input_tokens": 555,
+        "options": 17,
+        "max_option_tokens": 21,
+        "head_max_len": 426,
+        "max_len": 555,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Current piece I; next O. Examples, not current options: 1) Horizontal I fills four bottom gaps: clear 1 row, score 100. 2) O fills a two-column gap in two rows: clear 2, score 300. 3) Rotate I into a one-column four-row well: clear 4, score 800. 4) With equal clears, choose 0 holes over 3 holes. 5) A safe placement beats a losing placement. Holes are empty cells trapped under blocks. All listed placements are reachable. Options are not ranked. Choose using their predicted results.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose a placement. First avoid losing. Then maximize cleared rows. For equal clears minimize holes, then peak height, total height, and unevenness. A full 10-cell row disappears and scores. Losing is failure, not victory.",
+            "criteria": {
+              "p0": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p1": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p2": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p3": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p4": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p5": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 10",
+              "p6": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p7": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 14",
+              "p8": "safe; clear 0; holes 0; peak 7; total height 31; unevenness 10",
+              "p9": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 8",
+              "p10": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 8",
+              "p11": "safe; clear 0; holes 3; peak 4; total height 34; unevenness 2",
+              "p12": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 8",
+              "p13": "safe; clear 0; holes 3; peak 4; total height 34; unevenness 2",
+              "p14": "safe; clear 0; holes 0; peak 4; total height 31; unevenness 7",
+              "p15": "safe; clear 0; holes 3; peak 4; total height 34; unevenness 1",
+              "p16": "safe; clear 3; holes 0; peak 1; total height 1; unevenness 2"
+            }
+          }
+        }
+      }
+    }
+  }
+]

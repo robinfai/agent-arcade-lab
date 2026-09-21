@@ -1,0 +1,722 @@
+{
+  "summary": {
+    "model": "jev-1.13.0",
+    "requests": 10,
+    "tetris_actions": 39,
+    "tetris_score": 0,
+    "snake_frames": 5,
+    "snake_score": 0,
+    "arena_frames": 1,
+    "correction_enabled": false
+  },
+  "records": [
+    {
+      "endpoint": "/v1/tool-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Tetris planner assistance. Complete all ten cells in a row to clear it. The program compares survival, rows cleared, trapped holes, maximum height, total height, then roughness. Best means the best one-piece prediction, not guaranteed future survival. All reachable candidates are included.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe placement. Clear rows and avoid trapped holes. Return the label of the best outcome.",
+            "criteria": {
+              "p0": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p1": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p2": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p3": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p4": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p5": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p6": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p7": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p8": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p9": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p10": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p11": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p12": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p13": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p14": "Safe now. Less progress. Clear 0 rows; holes 2; peak 3.",
+              "p15": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p16": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p17": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p18": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p19": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p20": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p21": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p22": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p23": "Safe. Best placement. Clear 0 rows; holes 0.",
+              "p24": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p25": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p26": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p27": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p28": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p29": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p30": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p31": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p32": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p33": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2."
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "p23",
+            "confidence": 0.65,
+            "probabilities": {
+              "p1": 0.01,
+              "p29": 0.02,
+              "p15": 0.0,
+              "p27": 0.0,
+              "p31": 0.0,
+              "p23": 0.67,
+              "p20": 0.12,
+              "p33": 0.0,
+              "p30": 0.0,
+              "p3": 0.01,
+              "p11": 0.0,
+              "p4": 0.0,
+              "p9": 0.0,
+              "p12": 0.0,
+              "p25": 0.0,
+              "p21": 0.01,
+              "p28": 0.0,
+              "p2": 0.0,
+              "p7": 0.0,
+              "p13": 0.01,
+              "p6": 0.0,
+              "p18": 0.03,
+              "p0": 0.0,
+              "p24": 0.02,
+              "p32": 0.0,
+              "p5": 0.01,
+              "p8": 0.0,
+              "p14": 0.0,
+              "p16": 0.0,
+              "p19": 0.06,
+              "p22": 0.02,
+              "p26": 0.0,
+              "p17": 0.0,
+              "p10": 0.01
+            }
+          }
+        },
+        "choice": "p23",
+        "probabilities": {
+          "p1": 0.01,
+          "p29": 0.02,
+          "p15": 0.0,
+          "p27": 0.0,
+          "p31": 0.0,
+          "p23": 0.67,
+          "p20": 0.12,
+          "p33": 0.0,
+          "p30": 0.0,
+          "p3": 0.01,
+          "p11": 0.0,
+          "p4": 0.0,
+          "p9": 0.0,
+          "p12": 0.0,
+          "p25": 0.0,
+          "p21": 0.01,
+          "p28": 0.0,
+          "p2": 0.0,
+          "p7": 0.0,
+          "p13": 0.01,
+          "p6": 0.0,
+          "p18": 0.03,
+          "p0": 0.0,
+          "p24": 0.02,
+          "p32": 0.0,
+          "p5": 0.01,
+          "p8": 0.0,
+          "p14": 0.0,
+          "p16": 0.0,
+          "p19": 0.06,
+          "p22": 0.02,
+          "p26": 0.0,
+          "p17": 0.0,
+          "p10": 0.01
+        },
+        "confidence": 0.65,
+        "usage": {
+          "input_tokens": 1427,
+          "output_tokens": 315
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 1862.8934579901397,
+        "decision_method": "jev_systemone",
+        "_http_ms": 1904.857,
+        "_inference_ms": 1862.8934579901397
+      }
+    },
+    {
+      "endpoint": "/v1/land-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Tetris planner assistance. Complete all ten cells in a row to clear it. The program compares survival, rows cleared, trapped holes, maximum height, total height, then roughness. Best means the best one-piece prediction, not guaranteed future survival. All reachable candidates are included.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe placement. Clear rows and avoid trapped holes. Return the label of the best outcome.",
+            "criteria": {
+              "p0": "Safe now. Less progress. Clear 0 rows; holes 1; peak 4.",
+              "p1": "Safe now. Less progress. Clear 0 rows; holes 1; peak 3.",
+              "p2": "Safe now. Less progress. Clear 0 rows; holes 0; peak 3.",
+              "p3": "Safe. Best placement. Clear 0 rows; holes 0.",
+              "p4": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p5": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p6": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p7": "Safe now. Less progress. Clear 0 rows; holes 0; peak 2.",
+              "p8": "Safe. Best placement. Clear 0 rows; holes 0."
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "p8",
+            "confidence": 0.15,
+            "probabilities": {
+              "p4": 0.18,
+              "p7": 0.04,
+              "p8": 0.25,
+              "p3": 0.22,
+              "p6": 0.03,
+              "p5": 0.16,
+              "p1": 0.03,
+              "p0": 0.02,
+              "p2": 0.07
+            }
+          }
+        },
+        "choice": "p8",
+        "probabilities": {
+          "p4": 0.18,
+          "p7": 0.04,
+          "p8": 0.25,
+          "p3": 0.22,
+          "p6": 0.03,
+          "p5": 0.16,
+          "p1": 0.03,
+          "p0": 0.02,
+          "p2": 0.07
+        },
+        "confidence": 0.15,
+        "usage": {
+          "input_tokens": 623,
+          "output_tokens": 90
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 826.9130830303766,
+        "decision_method": "jev_systemone",
+        "_http_ms": 831.55,
+        "_inference_ms": 826.9130830303766
+      }
+    },
+    {
+      "endpoint": "/v1/tool-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Tetris planner assistance. Complete all ten cells in a row to clear it. The program compares survival, rows cleared, trapped holes, maximum height, total height, then roughness. Best means the best one-piece prediction, not guaranteed future survival. All reachable candidates are included.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe placement. Clear rows and avoid trapped holes. Return the label of the best outcome.",
+            "criteria": {
+              "p0": "Safe now. Less progress. Clear 0 rows; holes 0; peak 6.",
+              "p1": "Safe now. Less progress. Clear 0 rows; holes 0; peak 6.",
+              "p2": "Safe now. Less progress. Clear 0 rows; holes 0; peak 6.",
+              "p3": "Safe now. Less progress. Clear 0 rows; holes 0; peak 5.",
+              "p4": "Safe now. Less progress. Clear 0 rows; holes 0; peak 5.",
+              "p5": "Safe now. Less progress. Clear 0 rows; holes 0; peak 4.",
+              "p6": "Safe now. Less progress. Clear 0 rows; holes 0; peak 4.",
+              "p7": "Safe now. Less progress. Clear 0 rows; holes 0; peak 4.",
+              "p8": "Safe now. Less progress. Clear 0 rows; holes 0; peak 4.",
+              "p9": "Safe now. Less progress. Clear 0 rows; holes 0; peak 4.",
+              "p10": "Safe now. Less progress. Clear 0 rows; holes 6; peak 3.",
+              "p11": "Safe now. Less progress. Clear 0 rows; holes 4; peak 3.",
+              "p12": "Safe now. Less progress. Clear 0 rows; holes 4; peak 3.",
+              "p13": "Safe now. Less progress. Clear 0 rows; holes 3; peak 2.",
+              "p14": "Safe now. Less progress. Clear 0 rows; holes 2; peak 2.",
+              "p15": "Safe. Best placement. Clear 0 rows; holes 0.",
+              "p16": "Safe. Best placement. Clear 0 rows; holes 0."
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "p15",
+            "confidence": 0.27,
+            "probabilities": {
+              "p4": 0.02,
+              "p9": 0.05,
+              "p0": 0.01,
+              "p16": 0.31,
+              "p11": 0.0,
+              "p10": 0.01,
+              "p14": 0.01,
+              "p5": 0.06,
+              "p6": 0.03,
+              "p1": 0.01,
+              "p3": 0.03,
+              "p15": 0.32,
+              "p7": 0.06,
+              "p12": 0.0,
+              "p13": 0.01,
+              "p2": 0.0,
+              "p8": 0.07
+            }
+          }
+        },
+        "choice": "p15",
+        "probabilities": {
+          "p4": 0.02,
+          "p9": 0.05,
+          "p0": 0.01,
+          "p16": 0.31,
+          "p11": 0.0,
+          "p10": 0.01,
+          "p14": 0.01,
+          "p5": 0.06,
+          "p6": 0.03,
+          "p1": 0.01,
+          "p3": 0.03,
+          "p15": 0.32,
+          "p7": 0.06,
+          "p12": 0.0,
+          "p13": 0.01,
+          "p2": 0.0,
+          "p8": 0.07
+        },
+        "confidence": 0.27,
+        "usage": {
+          "input_tokens": 878,
+          "output_tokens": 162
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 869.5487919612788,
+        "decision_method": "jev_systemone",
+        "_http_ms": 872.946,
+        "_inference_ms": 869.5487919612788
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Safe route: yes. Food reachable through empty cells: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move toward food.",
+            "criteria": {
+              "UP": "Unsafe. Traps the snake.",
+              "DOWN": "Safe. Best route to food.",
+              "LEFT": "Blocked. Collision.",
+              "RIGHT": "Safe. Slower route."
+            }
+          },
+          "risk": {
+            "type": "noul",
+            "instructions": "Is a safe route available?"
+          },
+          "food": {
+            "type": "noul",
+            "instructions": "Is food reachable through empty cells?"
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "DOWN",
+            "confidence": 0.97,
+            "probabilities": {
+              "RIGHT": 0.02,
+              "DOWN": 0.98,
+              "LEFT": 0.0,
+              "UP": 0.0
+            }
+          }
+        },
+        "choice": "DOWN",
+        "probabilities": {
+          "RIGHT": 0.02,
+          "DOWN": 0.98,
+          "LEFT": 0.0,
+          "UP": 0.0
+        },
+        "confidence": 0.97,
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 45
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 2141.821458004415,
+        "decision_method": "jev_systemone",
+        "_http_ms": 2144.672,
+        "_inference_ms": 2141.821458004415
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Safe route: yes. Food reachable through empty cells: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move toward food.",
+            "criteria": {
+              "UP": "Blocked. Collision.",
+              "DOWN": "Safe. Best route to food.",
+              "LEFT": "Safe. Slower route.",
+              "RIGHT": "Unsafe. Traps the snake."
+            }
+          },
+          "risk": {
+            "type": "noul",
+            "instructions": "Is a safe route available?"
+          },
+          "food": {
+            "type": "noul",
+            "instructions": "Is food reachable through empty cells?"
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "DOWN",
+            "confidence": 0.98,
+            "probabilities": {
+              "DOWN": 0.99,
+              "LEFT": 0.01,
+              "UP": 0.0,
+              "RIGHT": 0.0
+            }
+          }
+        },
+        "choice": "DOWN",
+        "probabilities": {
+          "DOWN": 0.99,
+          "LEFT": 0.01,
+          "UP": 0.0,
+          "RIGHT": 0.0
+        },
+        "confidence": 0.98,
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 45
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 888.519499974791,
+        "decision_method": "jev_systemone",
+        "_http_ms": 891.113,
+        "_inference_ms": 888.519499974791
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Safe route: yes. Food reachable through empty cells: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move toward food.",
+            "criteria": {
+              "UP": "Blocked. Collision.",
+              "DOWN": "Safe. Best route to food.",
+              "LEFT": "Unsafe. Traps the snake.",
+              "RIGHT": "Safe. Slower route."
+            }
+          },
+          "risk": {
+            "type": "noul",
+            "instructions": "Is a safe route available?"
+          },
+          "food": {
+            "type": "noul",
+            "instructions": "Is food reachable through empty cells?"
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "DOWN",
+            "confidence": 0.97,
+            "probabilities": {
+              "DOWN": 0.98,
+              "UP": 0.0,
+              "LEFT": 0.0,
+              "RIGHT": 0.02
+            }
+          }
+        },
+        "choice": "DOWN",
+        "probabilities": {
+          "DOWN": 0.98,
+          "UP": 0.0,
+          "LEFT": 0.0,
+          "RIGHT": 0.02
+        },
+        "confidence": 0.97,
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 45
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 1059.8759169806726,
+        "decision_method": "jev_systemone",
+        "_http_ms": 1061.693,
+        "_inference_ms": 1059.8759169806726
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Safe route: yes. Food reachable through empty cells: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move toward food.",
+            "criteria": {
+              "UP": "Blocked. Collision.",
+              "DOWN": "Safe. Best route to food.",
+              "LEFT": "Safe. Slower route.",
+              "RIGHT": "Unsafe. Traps the snake."
+            }
+          },
+          "risk": {
+            "type": "noul",
+            "instructions": "Is a safe route available?"
+          },
+          "food": {
+            "type": "noul",
+            "instructions": "Is food reachable through empty cells?"
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "DOWN",
+            "confidence": 0.98,
+            "probabilities": {
+              "DOWN": 0.99,
+              "LEFT": 0.01,
+              "RIGHT": 0.0,
+              "UP": 0.0
+            }
+          }
+        },
+        "choice": "DOWN",
+        "probabilities": {
+          "DOWN": 0.99,
+          "LEFT": 0.01,
+          "RIGHT": 0.0,
+          "UP": 0.0
+        },
+        "confidence": 0.98,
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 45
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 1115.4901249683462,
+        "decision_method": "jev_systemone",
+        "_http_ms": 1117.146,
+        "_inference_ms": 1115.4901249683462
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Safe route: yes. Food reachable through empty cells: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move toward food.",
+            "criteria": {
+              "UP": "Blocked. Collision.",
+              "DOWN": "Safe. Best route to food.",
+              "LEFT": "Unsafe. Traps the snake.",
+              "RIGHT": "Safe. Slower route."
+            }
+          },
+          "risk": {
+            "type": "noul",
+            "instructions": "Is a safe route available?"
+          },
+          "food": {
+            "type": "noul",
+            "instructions": "Is food reachable through empty cells?"
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "DOWN",
+            "confidence": 0.97,
+            "probabilities": {
+              "UP": 0.0,
+              "DOWN": 0.98,
+              "RIGHT": 0.02,
+              "LEFT": 0.0
+            }
+          }
+        },
+        "choice": "DOWN",
+        "probabilities": {
+          "UP": 0.0,
+          "DOWN": 0.98,
+          "RIGHT": 0.02,
+          "LEFT": 0.0
+        },
+        "confidence": 0.97,
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 45
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 699.600082996767,
+        "decision_method": "jev_systemone",
+        "_http_ms": 701.761,
+        "_inference_ms": 699.600082996767
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Competitive Snake. Program checks next-frame collision against all opponent actions, recent repeated head/heading positions, and paths to food avoiding both current bodies. Future opponent movement is unknown. All options remain available.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe route to food. Avoid collisions and repeated loops. Return the label of the best outcome.",
+            "criteria": {
+              "forward": "Safe. Best available route toward food.",
+              "left": "Safe. Slower route toward food.",
+              "right": "Safe. Best available route toward food."
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "forward",
+            "confidence": 0.82,
+            "probabilities": {
+              "left": 0.02,
+              "forward": 0.88,
+              "right": 0.1
+            }
+          }
+        },
+        "choice": "forward",
+        "probabilities": {
+          "left": 0.02,
+          "forward": 0.88,
+          "right": 0.1
+        },
+        "confidence": 0.82,
+        "usage": {
+          "input_tokens": 397,
+          "output_tokens": 38
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 1110.399666999001,
+        "decision_method": "jev_systemone",
+        "_http_ms": 1112.334,
+        "_inference_ms": 1110.399666999001
+      }
+    },
+    {
+      "endpoint": "/v1/snake-decision",
+      "request": {
+        "model": "jev-latest",
+        "state": "Competitive Snake. Program checks next-frame collision against all opponent actions, recent repeated head/heading positions, and paths to food avoiding both current bodies. Future opponent movement is unknown. All options remain available.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe route to food. Avoid collisions and repeated loops. Return the label of the best outcome.",
+            "criteria": {
+              "forward": "Safe. Slower route toward food.",
+              "left": "Safe. Best available route toward food.",
+              "right": "Safe. Slower route toward food."
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "move": {
+            "type": "choice",
+            "choice": "left",
+            "confidence": 0.93,
+            "probabilities": {
+              "right": 0.0,
+              "forward": 0.04,
+              "left": 0.96
+            }
+          }
+        },
+        "choice": "left",
+        "probabilities": {
+          "right": 0.0,
+          "forward": 0.04,
+          "left": 0.96
+        },
+        "confidence": 0.93,
+        "usage": {
+          "input_tokens": 397,
+          "output_tokens": 38
+        },
+        "thinking": false,
+        "error": null,
+        "latency_ms": 737.9188750055619,
+        "decision_method": "jev_systemone",
+        "_http_ms": 739.575,
+        "_inference_ms": 737.9188750055619
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "piece": "I",
+    "tokens": 2857,
+    "truncated": false
+  },
+  {
+    "piece": "O",
+    "tokens": 2402,
+    "truncated": false
+  },
+  {
+    "piece": "T",
+    "tokens": 3826,
+    "truncated": false
+  },
+  {
+    "piece": "S",
+    "tokens": 2857,
+    "truncated": false
+  },
+  {
+    "piece": "Z",
+    "tokens": 2857,
+    "truncated": false
+  },
+  {
+    "piece": "J",
+    "tokens": 3826,
+    "truncated": false
+  },
+  {
+    "piece": "L",
+    "tokens": 3826,
+    "truncated": false
+  }
+]

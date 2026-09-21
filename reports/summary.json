@@ -1,0 +1,59 @@
+{
+  "games": 10,
+  "steps": 254,
+  "steps_per_game": {
+    "mean": 25.4,
+    "p50": 25.5,
+    "p95": 28.65,
+    "min": 20,
+    "max": 30
+  },
+  "lines": 1,
+  "http_ms": {
+    "mean": 562.5429409448819,
+    "p50": 476.7685,
+    "p95": 1160.124,
+    "min": 107.052,
+    "max": 2052.891
+  },
+  "inference_ms": {
+    "mean": 541.7175157480315,
+    "p50": 459.3615,
+    "p95": 1137.5592,
+    "min": 105.284,
+    "max": 2049.372
+  },
+  "input_tokens": {
+    "mean": 1090.0590551181103,
+    "p50": 1071.0,
+    "p95": 2140.0,
+    "min": 256,
+    "max": 2163
+  },
+  "legal_rate": 1.0,
+  "heuristic_agreement": 0.20078740157480315,
+  "dominated_rate": 0.7086614173228346,
+  "mean_heuristic_regret": 3.310008007874016,
+  "missed_clear_count": 14,
+  "baseline_steps": 4995,
+  "baseline_lines": 1945,
+  "random_steps": 264,
+  "random_lines": 1,
+  "model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "revision": "da28692b5f139cb0ec58a356b437486b7dac7462",
+  "environment": {
+    "chip": "Apple M4 Pro",
+    "memory_gib": 64,
+    "os": "macOS 27.0 (26A428)",
+    "python": "3.12.13",
+    "mlx": "0.32.2",
+    "mlx_lm": "0.31.3",
+    "typesafe_sdk": "0.7.0"
+  },
+  "protocol": "single request concurrency, full prefill, no KV reuse, no sampling, no retries/fallback",
+  "sha256": {
+    "lib/game.dart": "3d5b26c76bca4414a6ef6853dcfebed22f978106afea014d14f0ebb57a655895",
+    "backend/server.py": "22def0508d7fd37f3bf1398f106d2fd1c148d515240254a9a6bc476e1b6e7f76",
+    "tool/benchmark.dart": "7e68a3085c36f93738488933107d0c21870a36c2348b8feee80cbfb7dd62e4d1"
+  }
+}

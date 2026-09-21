@@ -1,0 +1,12 @@
+任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。
+每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。
+字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。
+严格按顺序筛选，不混合权重：
+1. 有 game_over=false 就先排除 true。
+2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。
+3. 消行数相同才选 holes_after 最少的。
+4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。
+例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。
+动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。
+只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。
+Return the label of the best outcome.

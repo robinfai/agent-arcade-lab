@@ -1,0 +1,3686 @@
+[
+  {
+    "variant": "baseline",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 3,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "O",
+        "next_piece": "Z"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Return the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 1,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 22,
+              "max_height": 8,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p1": {
+              "column": 0,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 2,
+              "height_sum": 18,
+              "max_height": 8,
+              "roughness": 8,
+              "game_over": false
+            },
+            "p2": {
+              "column": 3,
+              "rotation": 0,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 2,
+              "height_sum": 18,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p3": {
+              "column": 2,
+              "rotation": 0,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 7,
+              "game_over": false
+            },
+            "p4": {
+              "column": 4,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 9,
+              "game_over": false
+            },
+            "p5": {
+              "column": 5,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p6": {
+              "column": 6,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p7": {
+              "column": 7,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p8": {
+              "column": 8,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 9,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p1",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np1\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"O\",\"next_piece\":\"Z\"}\nQuestion: Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Call place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 1, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 22, \"max_height\": 8, \"roughness\": 11, \"game_over\": false}, \"p1\": {\"column\": 0, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 2, \"height_sum\": 18, \"max_height\": 8, \"roughness\": 8, \"game_over\": false}, \"p2\": {\"column\": 3, \"rotation\": 0, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 2, \"height_sum\": 18, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p3\": {\"column\": 2, \"rotation\": 0, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 7, \"game_over\": false}, \"p4\": {\"column\": 4, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 9, \"game_over\": false}, \"p5\": {\"column\": 5, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p6\": {\"column\": 6, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p7\": {\"column\": 7, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p8\": {\"column\": 8, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 9, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 1289,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 492.6429999759421,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "baseline",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 8,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "L",
+        "next_piece": "Z"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Return the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 1,
+              "rotation": 1,
+              "row": 2,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 56,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p1": {
+              "column": 1,
+              "rotation": 0,
+              "row": 3,
+              "lines_cleared": 0,
+              "holes_after": 30,
+              "height_sum": 66,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p2": {
+              "column": 1,
+              "rotation": 2,
+              "row": 3,
+              "lines_cleared": 0,
+              "holes_after": 32,
+              "height_sum": 68,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p3": {
+              "column": 1,
+              "rotation": 3,
+              "row": 4,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 54,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p4": {
+              "column": 1,
+              "rotation": 0,
+              "row": 10,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 51,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p5": {
+              "column": 1,
+              "rotation": 3,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 10,
+              "height_sum": 46,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 11,
+              "height_sum": 47,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 10,
+              "height_sum": 46,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p8": {
+              "column": 2,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 12,
+              "height_sum": 48,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p9": {
+              "column": 3,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 16,
+              "height_sum": 52,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p10": {
+              "column": 2,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 51,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p11": {
+              "column": 3,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 54,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p12": {
+              "column": 2,
+              "rotation": 2,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 50,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p13": {
+              "column": 3,
+              "rotation": 3,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 9,
+              "height_sum": 45,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p14": {
+              "column": 4,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 25,
+              "game_over": false
+            },
+            "p15": {
+              "column": 5,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p16": {
+              "column": 6,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p17": {
+              "column": 4,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 25,
+              "game_over": false
+            },
+            "p18": {
+              "column": 7,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p19": {
+              "column": 5,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p20": {
+              "column": 8,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 30,
+              "game_over": false
+            },
+            "p21": {
+              "column": 6,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p22": {
+              "column": 7,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p23": {
+              "column": 8,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 28,
+              "game_over": false
+            },
+            "p24": {
+              "column": 4,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p25": {
+              "column": 5,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p26": {
+              "column": 6,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p27": {
+              "column": 7,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p28": {
+              "column": 4,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 25,
+              "game_over": false
+            },
+            "p29": {
+              "column": 5,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p30": {
+              "column": 6,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p31": {
+              "column": 7,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p1",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np1\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16",
+                    "p17",
+                    "p18",
+                    "p19",
+                    "p20",
+                    "p21",
+                    "p22",
+                    "p23",
+                    "p24",
+                    "p25",
+                    "p26",
+                    "p27",
+                    "p28",
+                    "p29",
+                    "p30",
+                    "p31"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"L\",\"next_piece\":\"Z\"}\nQuestion: Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Call place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 1, \"rotation\": 1, \"row\": 2, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 56, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p1\": {\"column\": 1, \"rotation\": 0, \"row\": 3, \"lines_cleared\": 0, \"holes_after\": 30, \"height_sum\": 66, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p2\": {\"column\": 1, \"rotation\": 2, \"row\": 3, \"lines_cleared\": 0, \"holes_after\": 32, \"height_sum\": 68, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p3\": {\"column\": 1, \"rotation\": 3, \"row\": 4, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 54, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p4\": {\"column\": 1, \"rotation\": 0, \"row\": 10, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 51, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p5\": {\"column\": 1, \"rotation\": 3, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 10, \"height_sum\": 46, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 11, \"height_sum\": 47, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 10, \"height_sum\": 46, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p8\": {\"column\": 2, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 12, \"height_sum\": 48, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p9\": {\"column\": 3, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 16, \"height_sum\": 52, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p10\": {\"column\": 2, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 51, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p11\": {\"column\": 3, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 54, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p12\": {\"column\": 2, \"rotation\": 2, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 50, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p13\": {\"column\": 3, \"rotation\": 3, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 9, \"height_sum\": 45, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}, \"p14\": {\"column\": 4, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 25, \"game_over\": false}, \"p15\": {\"column\": 5, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p16\": {\"column\": 6, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p17\": {\"column\": 4, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 25, \"game_over\": false}, \"p18\": {\"column\": 7, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p19\": {\"column\": 5, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p20\": {\"column\": 8, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 30, \"game_over\": false}, \"p21\": {\"column\": 6, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p22\": {\"column\": 7, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p23\": {\"column\": 8, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 28, \"game_over\": false}, \"p24\": {\"column\": 4, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}, \"p25\": {\"column\": 5, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p26\": {\"column\": 6, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p27\": {\"column\": 7, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}, \"p28\": {\"column\": 4, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 25, \"game_over\": false}, \"p29\": {\"column\": 5, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p30\": {\"column\": 6, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p31\": {\"column\": 7, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 3011,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 945.0583750149235,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "baseline",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 13,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "T",
+        "next_piece": "S"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Return the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 1,
+              "rotation": 1,
+              "row": 2,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 76,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p1": {
+              "column": 1,
+              "rotation": 0,
+              "row": 3,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 81,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p2": {
+              "column": 1,
+              "rotation": 2,
+              "row": 4,
+              "lines_cleared": 0,
+              "holes_after": 24,
+              "height_sum": 80,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p3": {
+              "column": 3,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p4": {
+              "column": 2,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p5": {
+              "column": 4,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 17,
+              "height_sum": 73,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 3,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 3,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p8": {
+              "column": 3,
+              "rotation": 0,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 16,
+              "height_sum": 72,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p9": {
+              "column": 2,
+              "rotation": 0,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 13,
+              "height_sum": 69,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p10": {
+              "column": 4,
+              "rotation": 0,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 81,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p11": {
+              "column": 3,
+              "rotation": 2,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 74,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p12": {
+              "column": 2,
+              "rotation": 2,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p13": {
+              "column": 4,
+              "rotation": 3,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p14": {
+              "column": 4,
+              "rotation": 2,
+              "row": 10,
+              "lines_cleared": 0,
+              "holes_after": 24,
+              "height_sum": 80,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p15": {
+              "column": 5,
+              "rotation": 1,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 76,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p16": {
+              "column": 5,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 81,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p17": {
+              "column": 4,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 74,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p18": {
+              "column": 5,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 74,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p19": {
+              "column": 5,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 24,
+              "height_sum": 80,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p20": {
+              "column": 6,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p21": {
+              "column": 7,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p22": {
+              "column": 8,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p23": {
+              "column": 6,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p24": {
+              "column": 7,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p25": {
+              "column": 8,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p26": {
+              "column": 6,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 13,
+              "height_sum": 69,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p27": {
+              "column": 5,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 12,
+              "height_sum": 68,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p28": {
+              "column": 7,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 13,
+              "height_sum": 69,
+              "max_height": 17,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p29": {
+              "column": 6,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p30": {
+              "column": 7,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p10",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np10\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16",
+                    "p17",
+                    "p18",
+                    "p19",
+                    "p20",
+                    "p21",
+                    "p22",
+                    "p23",
+                    "p24",
+                    "p25",
+                    "p26",
+                    "p27",
+                    "p28",
+                    "p29",
+                    "p30"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"T\",\"next_piece\":\"S\"}\nQuestion: Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Call place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 1, \"rotation\": 1, \"row\": 2, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 76, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p1\": {\"column\": 1, \"rotation\": 0, \"row\": 3, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 81, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p2\": {\"column\": 1, \"rotation\": 2, \"row\": 4, \"lines_cleared\": 0, \"holes_after\": 24, \"height_sum\": 80, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p3\": {\"column\": 3, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p4\": {\"column\": 2, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p5\": {\"column\": 4, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 17, \"height_sum\": 73, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 3, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 3, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p8\": {\"column\": 3, \"rotation\": 0, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 16, \"height_sum\": 72, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p9\": {\"column\": 2, \"rotation\": 0, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 13, \"height_sum\": 69, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p10\": {\"column\": 4, \"rotation\": 0, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 81, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p11\": {\"column\": 3, \"rotation\": 2, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 74, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p12\": {\"column\": 2, \"rotation\": 2, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p13\": {\"column\": 4, \"rotation\": 3, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p14\": {\"column\": 4, \"rotation\": 2, \"row\": 10, \"lines_cleared\": 0, \"holes_after\": 24, \"height_sum\": 80, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p15\": {\"column\": 5, \"rotation\": 1, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 76, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p16\": {\"column\": 5, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 81, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p17\": {\"column\": 4, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 74, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p18\": {\"column\": 5, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 74, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p19\": {\"column\": 5, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 24, \"height_sum\": 80, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p20\": {\"column\": 6, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p21\": {\"column\": 7, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p22\": {\"column\": 8, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p23\": {\"column\": 6, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p24\": {\"column\": 7, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p25\": {\"column\": 8, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 20, \"game_over\": false}, \"p26\": {\"column\": 6, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 13, \"height_sum\": 69, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p27\": {\"column\": 5, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 12, \"height_sum\": 68, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p28\": {\"column\": 7, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 13, \"height_sum\": 69, \"max_height\": 17, \"roughness\": 20, \"game_over\": false}, \"p29\": {\"column\": 6, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p30\": {\"column\": 7, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2945,
+        "output_tokens": 30
+      }
+    },
+    "http_ms": 924.2722080089152,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "baseline",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 18,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "I",
+        "next_piece": "T"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Return the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 2,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 51,
+              "height_sum": 117,
+              "max_height": 19,
+              "roughness": 21,
+              "game_over": true
+            },
+            "p1": {
+              "column": 1,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 39,
+              "height_sum": 105,
+              "max_height": 19,
+              "roughness": 21,
+              "game_over": true
+            },
+            "p2": {
+              "column": 2,
+              "rotation": 0,
+              "row": 4,
+              "lines_cleared": 0,
+              "holes_after": 41,
+              "height_sum": 107,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p3": {
+              "column": 3,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p4": {
+              "column": 2,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 80,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p5": {
+              "column": 4,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 0,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 27,
+              "height_sum": 93,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 0,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 86,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p8": {
+              "column": 4,
+              "rotation": 0,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 99,
+              "max_height": 18,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p9": {
+              "column": 5,
+              "rotation": 1,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p10": {
+              "column": 5,
+              "rotation": 0,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 28,
+              "height_sum": 94,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p11": {
+              "column": 4,
+              "rotation": 0,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 23,
+              "height_sum": 89,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p12": {
+              "column": 6,
+              "rotation": 1,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p13": {
+              "column": 7,
+              "rotation": 1,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p14": {
+              "column": 9,
+              "rotation": 1,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p15": {
+              "column": 8,
+              "rotation": 1,
+              "row": 15,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p16": {
+              "column": 6,
+              "rotation": 0,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 19,
+              "height_sum": 85,
+              "max_height": 18,
+              "roughness": 16,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p2",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np2\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"I\",\"next_piece\":\"T\"}\nQuestion: Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Call place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 2, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 51, \"height_sum\": 117, \"max_height\": 19, \"roughness\": 21, \"game_over\": true}, \"p1\": {\"column\": 1, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 39, \"height_sum\": 105, \"max_height\": 19, \"roughness\": 21, \"game_over\": true}, \"p2\": {\"column\": 2, \"rotation\": 0, \"row\": 4, \"lines_cleared\": 0, \"holes_after\": 41, \"height_sum\": 107, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p3\": {\"column\": 3, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p4\": {\"column\": 2, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 80, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p5\": {\"column\": 4, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 27, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 0, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 27, \"height_sum\": 93, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 0, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 86, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p8\": {\"column\": 4, \"rotation\": 0, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 99, \"max_height\": 18, \"roughness\": 21, \"game_over\": false}, \"p9\": {\"column\": 5, \"rotation\": 1, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 21, \"game_over\": false}, \"p10\": {\"column\": 5, \"rotation\": 0, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 28, \"height_sum\": 94, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p11\": {\"column\": 4, \"rotation\": 0, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 23, \"height_sum\": 89, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p12\": {\"column\": 6, \"rotation\": 1, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 21, \"game_over\": false}, \"p13\": {\"column\": 7, \"rotation\": 1, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 27, \"game_over\": false}, \"p14\": {\"column\": 9, \"rotation\": 1, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 23, \"game_over\": false}, \"p15\": {\"column\": 8, \"rotation\": 1, \"row\": 15, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 23, \"game_over\": false}, \"p16\": {\"column\": 6, \"rotation\": 0, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 19, \"height_sum\": 85, \"max_height\": 18, \"roughness\": 16, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 1906,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 619.2962920176797,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "baseline",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 23,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "J",
+        "next_piece": "Z"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Return the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 2,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p1": {
+              "column": 3,
+              "rotation": 1,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p2": {
+              "column": 3,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 41,
+              "height_sum": 127,
+              "max_height": 19,
+              "roughness": 16,
+              "game_over": false
+            },
+            "p3": {
+              "column": 4,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 53,
+              "height_sum": 139,
+              "max_height": 19,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p4": {
+              "column": 3,
+              "rotation": 1,
+              "row": 5,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 111,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p5": {
+              "column": 3,
+              "rotation": 0,
+              "row": 6,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 2,
+              "row": 7,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 2,
+              "row": 7,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 111,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p8": {
+              "column": 4,
+              "rotation": 1,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p9": {
+              "column": 4,
+              "rotation": 3,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p10": {
+              "column": 4,
+              "rotation": 0,
+              "row": 10,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p11": {
+              "column": 4,
+              "rotation": 2,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p12": {
+              "column": 5,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p13": {
+              "column": 6,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p14": {
+              "column": 7,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p15": {
+              "column": 5,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 18,
+              "game_over": false
+            },
+            "p16": {
+              "column": 8,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p17": {
+              "column": 6,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p18": {
+              "column": 4,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 28,
+              "height_sum": 114,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p19": {
+              "column": 7,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p20": {
+              "column": 8,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p21": {
+              "column": 5,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p22": {
+              "column": 6,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 18,
+              "game_over": false
+            },
+            "p23": {
+              "column": 7,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p24": {
+              "column": 5,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p25": {
+              "column": 6,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 18,
+              "game_over": false
+            },
+            "p26": {
+              "column": 7,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 16,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p2",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np2\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16",
+                    "p17",
+                    "p18",
+                    "p19",
+                    "p20",
+                    "p21",
+                    "p22",
+                    "p23",
+                    "p24",
+                    "p25",
+                    "p26"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"J\",\"next_piece\":\"Z\"}\nQuestion: Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Call place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 2, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p1\": {\"column\": 3, \"rotation\": 1, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p2\": {\"column\": 3, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 41, \"height_sum\": 127, \"max_height\": 19, \"roughness\": 16, \"game_over\": false}, \"p3\": {\"column\": 4, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 53, \"height_sum\": 139, \"max_height\": 19, \"roughness\": 18, \"game_over\": true}, \"p4\": {\"column\": 3, \"rotation\": 1, \"row\": 5, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 111, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p5\": {\"column\": 3, \"rotation\": 0, \"row\": 6, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 2, \"row\": 7, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 2, \"row\": 7, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 111, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p8\": {\"column\": 4, \"rotation\": 1, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p9\": {\"column\": 4, \"rotation\": 3, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p10\": {\"column\": 4, \"rotation\": 0, \"row\": 10, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p11\": {\"column\": 4, \"rotation\": 2, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p12\": {\"column\": 5, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p13\": {\"column\": 6, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p14\": {\"column\": 7, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p15\": {\"column\": 5, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 18, \"game_over\": false}, \"p16\": {\"column\": 8, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p17\": {\"column\": 6, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p18\": {\"column\": 4, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 28, \"height_sum\": 114, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p19\": {\"column\": 7, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p20\": {\"column\": 8, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p21\": {\"column\": 5, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p22\": {\"column\": 6, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 18, \"game_over\": false}, \"p23\": {\"column\": 7, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p24\": {\"column\": 5, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p25\": {\"column\": 6, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 18, \"game_over\": false}, \"p26\": {\"column\": 7, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 16, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2676,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 838.234625000041,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "baseline",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 25,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "T",
+        "next_piece": "I"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Return the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 3,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 48,
+              "height_sum": 142,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p1": {
+              "column": 2,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 48,
+              "height_sum": 142,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p2": {
+              "column": 4,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 48,
+              "height_sum": 142,
+              "max_height": 20,
+              "roughness": 20,
+              "game_over": true
+            },
+            "p3": {
+              "column": 3,
+              "rotation": 1,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 47,
+              "height_sum": 141,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p3",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np3\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"T\",\"next_piece\":\"I\"}\nQuestion: Your goal is to survive and score by completing horizontal rows. A row disappears ONLY when all 10 columns are occupied. Clearing rows frees space for future pieces; merely making a flat surface or placing more pieces does not score.\nCompare candidates in this strict priority order:\n1. Avoid game_over=true whenever any non-terminal candidate exists.\n2. Among non-terminal candidates, FIRST maximize lines_cleared. Take an available clear now; do not reject it merely because another placement has a lower height_sum or roughness. Do not delay an available clear to wait for a future multi-line clear.\n3. If lines_cleared is tied, prefer fewer holes_after. Holes are empty cells trapped below blocks: they obstruct completing lower rows. Preserve access to gaps instead of roofing them over.\n4. Only after comparing clears and holes, prefer lower max_height, then height_sum, then roughness. Flatness is a tie-breaker, NOT the main objective.\nWhen no row can be cleared now, work toward filling incomplete rows while keeping gaps reachable. These candidate summaries do not expose exact row occupancy, so do not invent a nearly completed row or infer it from roughness; use the supplied clear, hole and height measurements.\nRead the numeric outcomes and apply the priorities before calling the tool. Candidate order is NOT a ranking. Call place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 3, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 48, \"height_sum\": 142, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p1\": {\"column\": 2, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 48, \"height_sum\": 142, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p2\": {\"column\": 4, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 48, \"height_sum\": 142, \"max_height\": 20, \"roughness\": 20, \"game_over\": true}, \"p3\": {\"column\": 3, \"rotation\": 1, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 47, \"height_sum\": 141, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 946,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 357.2858329862356,
+    "valid": true,
+    "priority_correct": true,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "coached",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 3,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "O",
+        "next_piece": "Z"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nReturn the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 1,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 22,
+              "max_height": 8,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p1": {
+              "column": 0,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 2,
+              "height_sum": 18,
+              "max_height": 8,
+              "roughness": 8,
+              "game_over": false
+            },
+            "p2": {
+              "column": 3,
+              "rotation": 0,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 2,
+              "height_sum": 18,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p3": {
+              "column": 2,
+              "rotation": 0,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 7,
+              "game_over": false
+            },
+            "p4": {
+              "column": 4,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 9,
+              "game_over": false
+            },
+            "p5": {
+              "column": 5,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p6": {
+              "column": 6,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p7": {
+              "column": 7,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 11,
+              "game_over": false
+            },
+            "p8": {
+              "column": 8,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 1,
+              "height_sum": 17,
+              "max_height": 6,
+              "roughness": 9,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p3",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np3\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"O\",\"next_piece\":\"Z\"}\nQuestion: 任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nCall place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 1, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 22, \"max_height\": 8, \"roughness\": 11, \"game_over\": false}, \"p1\": {\"column\": 0, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 2, \"height_sum\": 18, \"max_height\": 8, \"roughness\": 8, \"game_over\": false}, \"p2\": {\"column\": 3, \"rotation\": 0, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 2, \"height_sum\": 18, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p3\": {\"column\": 2, \"rotation\": 0, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 7, \"game_over\": false}, \"p4\": {\"column\": 4, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 9, \"game_over\": false}, \"p5\": {\"column\": 5, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p6\": {\"column\": 6, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p7\": {\"column\": 7, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 11, \"game_over\": false}, \"p8\": {\"column\": 8, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 1, \"height_sum\": 17, \"max_height\": 6, \"roughness\": 9, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 1331,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 460.2588330162689,
+    "valid": true,
+    "priority_correct": true,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "coached",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 8,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "L",
+        "next_piece": "Z"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nReturn the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 1,
+              "rotation": 1,
+              "row": 2,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 56,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p1": {
+              "column": 1,
+              "rotation": 0,
+              "row": 3,
+              "lines_cleared": 0,
+              "holes_after": 30,
+              "height_sum": 66,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p2": {
+              "column": 1,
+              "rotation": 2,
+              "row": 3,
+              "lines_cleared": 0,
+              "holes_after": 32,
+              "height_sum": 68,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p3": {
+              "column": 1,
+              "rotation": 3,
+              "row": 4,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 54,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p4": {
+              "column": 1,
+              "rotation": 0,
+              "row": 10,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 51,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p5": {
+              "column": 1,
+              "rotation": 3,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 10,
+              "height_sum": 46,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 11,
+              "height_sum": 47,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 10,
+              "height_sum": 46,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p8": {
+              "column": 2,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 12,
+              "height_sum": 48,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p9": {
+              "column": 3,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 16,
+              "height_sum": 52,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p10": {
+              "column": 2,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 51,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p11": {
+              "column": 3,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 54,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p12": {
+              "column": 2,
+              "rotation": 2,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 50,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p13": {
+              "column": 3,
+              "rotation": 3,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 9,
+              "height_sum": 45,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p14": {
+              "column": 4,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 25,
+              "game_over": false
+            },
+            "p15": {
+              "column": 5,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p16": {
+              "column": 6,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p17": {
+              "column": 4,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 25,
+              "game_over": false
+            },
+            "p18": {
+              "column": 7,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p19": {
+              "column": 5,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p20": {
+              "column": 8,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 30,
+              "game_over": false
+            },
+            "p21": {
+              "column": 6,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p22": {
+              "column": 7,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 31,
+              "game_over": false
+            },
+            "p23": {
+              "column": 8,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 28,
+              "game_over": false
+            },
+            "p24": {
+              "column": 4,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p25": {
+              "column": 5,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p26": {
+              "column": 6,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p27": {
+              "column": 7,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 6,
+              "height_sum": 42,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p28": {
+              "column": 4,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 25,
+              "game_over": false
+            },
+            "p29": {
+              "column": 5,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p30": {
+              "column": 6,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 29,
+              "game_over": false
+            },
+            "p31": {
+              "column": 7,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 8,
+              "height_sum": 44,
+              "max_height": 17,
+              "roughness": 27,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p1",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np1\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16",
+                    "p17",
+                    "p18",
+                    "p19",
+                    "p20",
+                    "p21",
+                    "p22",
+                    "p23",
+                    "p24",
+                    "p25",
+                    "p26",
+                    "p27",
+                    "p28",
+                    "p29",
+                    "p30",
+                    "p31"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"L\",\"next_piece\":\"Z\"}\nQuestion: 任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nCall place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 1, \"rotation\": 1, \"row\": 2, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 56, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p1\": {\"column\": 1, \"rotation\": 0, \"row\": 3, \"lines_cleared\": 0, \"holes_after\": 30, \"height_sum\": 66, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p2\": {\"column\": 1, \"rotation\": 2, \"row\": 3, \"lines_cleared\": 0, \"holes_after\": 32, \"height_sum\": 68, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p3\": {\"column\": 1, \"rotation\": 3, \"row\": 4, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 54, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p4\": {\"column\": 1, \"rotation\": 0, \"row\": 10, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 51, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p5\": {\"column\": 1, \"rotation\": 3, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 10, \"height_sum\": 46, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 11, \"height_sum\": 47, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 10, \"height_sum\": 46, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p8\": {\"column\": 2, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 12, \"height_sum\": 48, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p9\": {\"column\": 3, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 16, \"height_sum\": 52, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p10\": {\"column\": 2, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 51, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p11\": {\"column\": 3, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 54, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p12\": {\"column\": 2, \"rotation\": 2, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 50, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p13\": {\"column\": 3, \"rotation\": 3, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 9, \"height_sum\": 45, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}, \"p14\": {\"column\": 4, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 25, \"game_over\": false}, \"p15\": {\"column\": 5, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p16\": {\"column\": 6, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p17\": {\"column\": 4, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 25, \"game_over\": false}, \"p18\": {\"column\": 7, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p19\": {\"column\": 5, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p20\": {\"column\": 8, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 30, \"game_over\": false}, \"p21\": {\"column\": 6, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p22\": {\"column\": 7, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 31, \"game_over\": false}, \"p23\": {\"column\": 8, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 28, \"game_over\": false}, \"p24\": {\"column\": 4, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}, \"p25\": {\"column\": 5, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p26\": {\"column\": 6, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p27\": {\"column\": 7, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 6, \"height_sum\": 42, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}, \"p28\": {\"column\": 4, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 25, \"game_over\": false}, \"p29\": {\"column\": 5, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p30\": {\"column\": 6, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 29, \"game_over\": false}, \"p31\": {\"column\": 7, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 8, \"height_sum\": 44, \"max_height\": 17, \"roughness\": 27, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 3053,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 952.4350000428967,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "coached",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 13,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "T",
+        "next_piece": "S"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nReturn the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 1,
+              "rotation": 1,
+              "row": 2,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 76,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p1": {
+              "column": 1,
+              "rotation": 0,
+              "row": 3,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 81,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p2": {
+              "column": 1,
+              "rotation": 2,
+              "row": 4,
+              "lines_cleared": 0,
+              "holes_after": 24,
+              "height_sum": 80,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p3": {
+              "column": 3,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p4": {
+              "column": 2,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p5": {
+              "column": 4,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 17,
+              "height_sum": 73,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 3,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 3,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p8": {
+              "column": 3,
+              "rotation": 0,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 16,
+              "height_sum": 72,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p9": {
+              "column": 2,
+              "rotation": 0,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 13,
+              "height_sum": 69,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p10": {
+              "column": 4,
+              "rotation": 0,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 81,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p11": {
+              "column": 3,
+              "rotation": 2,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 74,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p12": {
+              "column": 2,
+              "rotation": 2,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p13": {
+              "column": 4,
+              "rotation": 3,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p14": {
+              "column": 4,
+              "rotation": 2,
+              "row": 10,
+              "lines_cleared": 0,
+              "holes_after": 24,
+              "height_sum": 80,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p15": {
+              "column": 5,
+              "rotation": 1,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 76,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p16": {
+              "column": 5,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 81,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p17": {
+              "column": 4,
+              "rotation": 0,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 74,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p18": {
+              "column": 5,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 74,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p19": {
+              "column": 5,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 24,
+              "height_sum": 80,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p20": {
+              "column": 6,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p21": {
+              "column": 7,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p22": {
+              "column": 8,
+              "rotation": 1,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p23": {
+              "column": 6,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p24": {
+              "column": 7,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p25": {
+              "column": 8,
+              "rotation": 3,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 70,
+              "max_height": 17,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p26": {
+              "column": 6,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 13,
+              "height_sum": 69,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p27": {
+              "column": 5,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 12,
+              "height_sum": 68,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p28": {
+              "column": 7,
+              "rotation": 0,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 13,
+              "height_sum": 69,
+              "max_height": 17,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p29": {
+              "column": 6,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p30": {
+              "column": 7,
+              "rotation": 2,
+              "row": 18,
+              "lines_cleared": 0,
+              "holes_after": 15,
+              "height_sum": 71,
+              "max_height": 17,
+              "roughness": 19,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p1",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np1\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16",
+                    "p17",
+                    "p18",
+                    "p19",
+                    "p20",
+                    "p21",
+                    "p22",
+                    "p23",
+                    "p24",
+                    "p25",
+                    "p26",
+                    "p27",
+                    "p28",
+                    "p29",
+                    "p30"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"T\",\"next_piece\":\"S\"}\nQuestion: 任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nCall place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 1, \"rotation\": 1, \"row\": 2, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 76, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p1\": {\"column\": 1, \"rotation\": 0, \"row\": 3, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 81, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p2\": {\"column\": 1, \"rotation\": 2, \"row\": 4, \"lines_cleared\": 0, \"holes_after\": 24, \"height_sum\": 80, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p3\": {\"column\": 3, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p4\": {\"column\": 2, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p5\": {\"column\": 4, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 17, \"height_sum\": 73, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 3, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 3, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p8\": {\"column\": 3, \"rotation\": 0, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 16, \"height_sum\": 72, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p9\": {\"column\": 2, \"rotation\": 0, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 13, \"height_sum\": 69, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p10\": {\"column\": 4, \"rotation\": 0, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 81, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p11\": {\"column\": 3, \"rotation\": 2, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 74, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p12\": {\"column\": 2, \"rotation\": 2, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p13\": {\"column\": 4, \"rotation\": 3, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p14\": {\"column\": 4, \"rotation\": 2, \"row\": 10, \"lines_cleared\": 0, \"holes_after\": 24, \"height_sum\": 80, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p15\": {\"column\": 5, \"rotation\": 1, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 76, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p16\": {\"column\": 5, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 81, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p17\": {\"column\": 4, \"rotation\": 0, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 74, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p18\": {\"column\": 5, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 74, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p19\": {\"column\": 5, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 24, \"height_sum\": 80, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p20\": {\"column\": 6, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p21\": {\"column\": 7, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p22\": {\"column\": 8, \"rotation\": 1, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 21, \"game_over\": false}, \"p23\": {\"column\": 6, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p24\": {\"column\": 7, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 23, \"game_over\": false}, \"p25\": {\"column\": 8, \"rotation\": 3, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 70, \"max_height\": 17, \"roughness\": 20, \"game_over\": false}, \"p26\": {\"column\": 6, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 13, \"height_sum\": 69, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}, \"p27\": {\"column\": 5, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 12, \"height_sum\": 68, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p28\": {\"column\": 7, \"rotation\": 0, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 13, \"height_sum\": 69, \"max_height\": 17, \"roughness\": 20, \"game_over\": false}, \"p29\": {\"column\": 6, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 17, \"game_over\": false}, \"p30\": {\"column\": 7, \"rotation\": 2, \"row\": 18, \"lines_cleared\": 0, \"holes_after\": 15, \"height_sum\": 71, \"max_height\": 17, \"roughness\": 19, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2987,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 930.7835419895127,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "coached",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 18,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "I",
+        "next_piece": "T"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nReturn the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 2,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 51,
+              "height_sum": 117,
+              "max_height": 19,
+              "roughness": 21,
+              "game_over": true
+            },
+            "p1": {
+              "column": 1,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 39,
+              "height_sum": 105,
+              "max_height": 19,
+              "roughness": 21,
+              "game_over": true
+            },
+            "p2": {
+              "column": 2,
+              "rotation": 0,
+              "row": 4,
+              "lines_cleared": 0,
+              "holes_after": 41,
+              "height_sum": 107,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p3": {
+              "column": 3,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p4": {
+              "column": 2,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 14,
+              "height_sum": 80,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p5": {
+              "column": 4,
+              "rotation": 1,
+              "row": 8,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 0,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 27,
+              "height_sum": 93,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 0,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 20,
+              "height_sum": 86,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p8": {
+              "column": 4,
+              "rotation": 0,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 99,
+              "max_height": 18,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p9": {
+              "column": 5,
+              "rotation": 1,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p10": {
+              "column": 5,
+              "rotation": 0,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 28,
+              "height_sum": 94,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p11": {
+              "column": 4,
+              "rotation": 0,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 23,
+              "height_sum": 89,
+              "max_height": 18,
+              "roughness": 19,
+              "game_over": false
+            },
+            "p12": {
+              "column": 6,
+              "rotation": 1,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 21,
+              "game_over": false
+            },
+            "p13": {
+              "column": 7,
+              "rotation": 1,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 27,
+              "game_over": false
+            },
+            "p14": {
+              "column": 9,
+              "rotation": 1,
+              "row": 14,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p15": {
+              "column": 8,
+              "rotation": 1,
+              "row": 15,
+              "lines_cleared": 0,
+              "holes_after": 18,
+              "height_sum": 84,
+              "max_height": 18,
+              "roughness": 23,
+              "game_over": false
+            },
+            "p16": {
+              "column": 6,
+              "rotation": 0,
+              "row": 17,
+              "lines_cleared": 0,
+              "holes_after": 19,
+              "height_sum": 85,
+              "max_height": 18,
+              "roughness": 16,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p1",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np1\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"I\",\"next_piece\":\"T\"}\nQuestion: 任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nCall place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 2, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 51, \"height_sum\": 117, \"max_height\": 19, \"roughness\": 21, \"game_over\": true}, \"p1\": {\"column\": 1, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 39, \"height_sum\": 105, \"max_height\": 19, \"roughness\": 21, \"game_over\": true}, \"p2\": {\"column\": 2, \"rotation\": 0, \"row\": 4, \"lines_cleared\": 0, \"holes_after\": 41, \"height_sum\": 107, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p3\": {\"column\": 3, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p4\": {\"column\": 2, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 14, \"height_sum\": 80, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p5\": {\"column\": 4, \"rotation\": 1, \"row\": 8, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 27, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 0, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 27, \"height_sum\": 93, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 0, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 20, \"height_sum\": 86, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p8\": {\"column\": 4, \"rotation\": 0, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 99, \"max_height\": 18, \"roughness\": 21, \"game_over\": false}, \"p9\": {\"column\": 5, \"rotation\": 1, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 21, \"game_over\": false}, \"p10\": {\"column\": 5, \"rotation\": 0, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 28, \"height_sum\": 94, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p11\": {\"column\": 4, \"rotation\": 0, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 23, \"height_sum\": 89, \"max_height\": 18, \"roughness\": 19, \"game_over\": false}, \"p12\": {\"column\": 6, \"rotation\": 1, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 21, \"game_over\": false}, \"p13\": {\"column\": 7, \"rotation\": 1, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 27, \"game_over\": false}, \"p14\": {\"column\": 9, \"rotation\": 1, \"row\": 14, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 23, \"game_over\": false}, \"p15\": {\"column\": 8, \"rotation\": 1, \"row\": 15, \"lines_cleared\": 0, \"holes_after\": 18, \"height_sum\": 84, \"max_height\": 18, \"roughness\": 23, \"game_over\": false}, \"p16\": {\"column\": 6, \"rotation\": 0, \"row\": 17, \"lines_cleared\": 0, \"holes_after\": 19, \"height_sum\": 85, \"max_height\": 18, \"roughness\": 16, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 1948,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 636.6175829898566,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": false
+  },
+  {
+    "variant": "coached",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 23,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "J",
+        "next_piece": "Z"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nReturn the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 2,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p1": {
+              "column": 3,
+              "rotation": 1,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p2": {
+              "column": 3,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 41,
+              "height_sum": 127,
+              "max_height": 19,
+              "roughness": 16,
+              "game_over": false
+            },
+            "p3": {
+              "column": 4,
+              "rotation": 0,
+              "row": 1,
+              "lines_cleared": 0,
+              "holes_after": 53,
+              "height_sum": 139,
+              "max_height": 19,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p4": {
+              "column": 3,
+              "rotation": 1,
+              "row": 5,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 111,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p5": {
+              "column": 3,
+              "rotation": 0,
+              "row": 6,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p6": {
+              "column": 3,
+              "rotation": 2,
+              "row": 7,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p7": {
+              "column": 2,
+              "rotation": 2,
+              "row": 7,
+              "lines_cleared": 0,
+              "holes_after": 25,
+              "height_sum": 111,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p8": {
+              "column": 4,
+              "rotation": 1,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p9": {
+              "column": 4,
+              "rotation": 3,
+              "row": 9,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p10": {
+              "column": 4,
+              "rotation": 0,
+              "row": 10,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p11": {
+              "column": 4,
+              "rotation": 2,
+              "row": 11,
+              "lines_cleared": 0,
+              "holes_after": 33,
+              "height_sum": 119,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p12": {
+              "column": 5,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p13": {
+              "column": 6,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p14": {
+              "column": 7,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p15": {
+              "column": 5,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 18,
+              "game_over": false
+            },
+            "p16": {
+              "column": 8,
+              "rotation": 1,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p17": {
+              "column": 6,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p18": {
+              "column": 4,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 28,
+              "height_sum": 114,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p19": {
+              "column": 7,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 20,
+              "game_over": false
+            },
+            "p20": {
+              "column": 8,
+              "rotation": 3,
+              "row": 12,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p21": {
+              "column": 5,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p22": {
+              "column": 6,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 18,
+              "game_over": false
+            },
+            "p23": {
+              "column": 7,
+              "rotation": 0,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 29,
+              "height_sum": 115,
+              "max_height": 18,
+              "roughness": 17,
+              "game_over": false
+            },
+            "p24": {
+              "column": 5,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 14,
+              "game_over": false
+            },
+            "p25": {
+              "column": 6,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 18,
+              "game_over": false
+            },
+            "p26": {
+              "column": 7,
+              "rotation": 2,
+              "row": 13,
+              "lines_cleared": 0,
+              "holes_after": 31,
+              "height_sum": 117,
+              "max_height": 18,
+              "roughness": 16,
+              "game_over": false
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p2",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np2\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3",
+                    "p4",
+                    "p5",
+                    "p6",
+                    "p7",
+                    "p8",
+                    "p9",
+                    "p10",
+                    "p11",
+                    "p12",
+                    "p13",
+                    "p14",
+                    "p15",
+                    "p16",
+                    "p17",
+                    "p18",
+                    "p19",
+                    "p20",
+                    "p21",
+                    "p22",
+                    "p23",
+                    "p24",
+                    "p25",
+                    "p26"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"J\",\"next_piece\":\"Z\"}\nQuestion: 任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nCall place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 2, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p1\": {\"column\": 3, \"rotation\": 1, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p2\": {\"column\": 3, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 41, \"height_sum\": 127, \"max_height\": 19, \"roughness\": 16, \"game_over\": false}, \"p3\": {\"column\": 4, \"rotation\": 0, \"row\": 1, \"lines_cleared\": 0, \"holes_after\": 53, \"height_sum\": 139, \"max_height\": 19, \"roughness\": 18, \"game_over\": true}, \"p4\": {\"column\": 3, \"rotation\": 1, \"row\": 5, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 111, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p5\": {\"column\": 3, \"rotation\": 0, \"row\": 6, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p6\": {\"column\": 3, \"rotation\": 2, \"row\": 7, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p7\": {\"column\": 2, \"rotation\": 2, \"row\": 7, \"lines_cleared\": 0, \"holes_after\": 25, \"height_sum\": 111, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p8\": {\"column\": 4, \"rotation\": 1, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p9\": {\"column\": 4, \"rotation\": 3, \"row\": 9, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p10\": {\"column\": 4, \"rotation\": 0, \"row\": 10, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p11\": {\"column\": 4, \"rotation\": 2, \"row\": 11, \"lines_cleared\": 0, \"holes_after\": 33, \"height_sum\": 119, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p12\": {\"column\": 5, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p13\": {\"column\": 6, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p14\": {\"column\": 7, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p15\": {\"column\": 5, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 18, \"game_over\": false}, \"p16\": {\"column\": 8, \"rotation\": 1, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p17\": {\"column\": 6, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p18\": {\"column\": 4, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 28, \"height_sum\": 114, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p19\": {\"column\": 7, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 20, \"game_over\": false}, \"p20\": {\"column\": 8, \"rotation\": 3, \"row\": 12, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p21\": {\"column\": 5, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p22\": {\"column\": 6, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 18, \"game_over\": false}, \"p23\": {\"column\": 7, \"rotation\": 0, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 29, \"height_sum\": 115, \"max_height\": 18, \"roughness\": 17, \"game_over\": false}, \"p24\": {\"column\": 5, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 14, \"game_over\": false}, \"p25\": {\"column\": 6, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 18, \"game_over\": false}, \"p26\": {\"column\": 7, \"rotation\": 2, \"row\": 13, \"lines_cleared\": 0, \"holes_after\": 31, \"height_sum\": 117, \"max_height\": 18, \"roughness\": 16, \"game_over\": false}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2718,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 856.8170829676092,
+    "valid": true,
+    "priority_correct": false,
+    "clear_priority_correct": true
+  },
+  {
+    "variant": "coached",
+    "split": "validation",
+    "seed": 20260922,
+    "piece_index": 25,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "game": "Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.",
+        "piece": "T",
+        "next_piece": "I"
+      },
+      "questions": {
+        "move": {
+          "type": "choice",
+          "instructions": "任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nReturn the label of the best outcome.",
+          "criteria": {
+            "p0": {
+              "column": 3,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 48,
+              "height_sum": 142,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p1": {
+              "column": 2,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 48,
+              "height_sum": 142,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            },
+            "p2": {
+              "column": 4,
+              "rotation": 0,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 48,
+              "height_sum": 142,
+              "max_height": 20,
+              "roughness": 20,
+              "game_over": true
+            },
+            "p3": {
+              "column": 3,
+              "rotation": 1,
+              "row": 0,
+              "lines_cleared": 0,
+              "holes_after": 47,
+              "height_sum": 141,
+              "max_height": 20,
+              "roughness": 18,
+              "game_over": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "mlx-community/Qwen3.5-0.8B-4bit",
+      "choice": "p3",
+      "error": null,
+      "raw_tool_call": "<tool_call>\n<function=place_piece>\n<parameter=placement_id>\np3\n</parameter>\n</function>\n</tool_call>",
+      "tool_schema": [
+        {
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "description": "Select one legal candidate placement. The caller executes its path under the supplied game rules. Call exactly once.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "placement_id": {
+                  "type": "string",
+                  "enum": [
+                    "p0",
+                    "p1",
+                    "p2",
+                    "p3"
+                  ],
+                  "description": "ID of the chosen legal placement"
+                }
+              },
+              "required": [
+                "placement_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "State:\n{\"game\":\"Step Tetris, assisted planning. Engine enumerates ALL reachable placements and predicts their outcomes. You select; engine executes the selected legal path with step gravity, not hard drop.\",\"piece\":\"T\",\"next_piece\":\"I\"}\nQuestion: 任务：填满横向整行并消除，腾出空间继续游戏。不要只追求表面平整。\n每个候选都是当前方块落位并锁定后的预测结果。所有候选都已锁定；锁定是正常落块，不是游戏失败，下一块可在新回合操作。\n字段不可混淆：game_over=false 表示游戏继续；game_over=true 才表示游戏结束。lines_cleared 只表示消除了几行，绝不表示是否锁定或是否结束。holes_after 是被方块压住的空格数。\n严格按顺序筛选，不混合权重：\n1. 有 game_over=false 就先排除 true。\n2. 剩余方案优先 lines_cleared 最大的，能消就消，不等待。\n3. 消行数相同才选 holes_after 最少的。\n4. 再并列才依次比较 max_height、height_sum、roughness，越小越好。\n例：A安全消0行，B安全消2行，C失败消4行。选B。A和B都会继续游戏；C才会结束。不会因为B消了行就判它失败。\n动作按数组从左到右执行。hard_drop保持当前列和旋转直接下降并锁定，只取消后面的动作，不跳过前面的动作。例如[right,rotate,hard_drop,left]实际执行right、rotate、hard_drop，最后的left取消。\n只根据提供的数值选方案，不编造未来收益或行占用。候选序号不是排序。只调用工具，不解释。\nCall place_piece with the placement_id of the best outcome. Output only the tool call.\nLegal placements:\n{\"p0\": {\"column\": 3, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 48, \"height_sum\": 142, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p1\": {\"column\": 2, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 48, \"height_sum\": 142, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}, \"p2\": {\"column\": 4, \"rotation\": 0, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 48, \"height_sum\": 142, \"max_height\": 20, \"roughness\": 20, \"game_over\": true}, \"p3\": {\"column\": 3, \"rotation\": 1, \"row\": 0, \"lines_cleared\": 0, \"holes_after\": 47, \"height_sum\": 141, \"max_height\": 20, \"roughness\": 18, \"game_over\": true}}"
+        }
+      ],
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 988,
+        "output_tokens": 29
+      }
+    },
+    "http_ms": 366.8134579784237,
+    "valid": true,
+    "priority_correct": true,
+    "clear_priority_correct": true
+  }
+]

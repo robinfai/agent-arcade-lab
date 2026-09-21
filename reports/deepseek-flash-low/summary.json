@@ -1,0 +1,19 @@
+{
+  "model": "deepseek-flash",
+  "thinking": "enabled",
+  "reasoning_effort": "low",
+  "seed": 20260920,
+  "rules": "step-gravity-no-kicks",
+  "max_actions_per_turn": 8,
+  "score": 0,
+  "lines": 0,
+  "locked_pieces": 0,
+  "actions": 16,
+  "turns": 3,
+  "invalid_plans": 0,
+  "total_tokens": 4676,
+  "elapsed_seconds": 6.869,
+  "mean_response_ms": 2282.5939999999996,
+  "p95_response_ms": 2604.677,
+  "end_reason": "error: Bad state: Invalid play_turn tool call"
+}

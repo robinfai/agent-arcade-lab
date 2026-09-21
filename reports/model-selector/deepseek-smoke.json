@@ -1,0 +1,64 @@
+[
+  {
+    "endpoint": "tool-decision",
+    "status": 200,
+    "response": {
+      "model": "deepseek-flash",
+      "thinking": false,
+      "usage": {
+        "prompt_tokens": 370,
+        "completion_tokens": 35,
+        "total_tokens": 405,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 370
+      },
+      "raw_tool_call": [
+        {
+          "index": 0,
+          "id": "call_00_u81XROVESo4puWva9FsZ9742",
+          "type": "function",
+          "function": {
+            "name": "place_piece",
+            "arguments": "{\"placement_id\": \"p1\"}"
+          }
+        }
+      ],
+      "choice": "p1",
+      "error": null
+    }
+  },
+  {
+    "endpoint": "land-decision",
+    "status": 200,
+    "response": {
+      "model": "deepseek-flash",
+      "thinking": false,
+      "usage": {
+        "prompt_tokens": 370,
+        "completion_tokens": 35,
+        "total_tokens": 405,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 370
+      },
+      "raw_tool_call": [
+        {
+          "index": 0,
+          "id": "call_00_3Ej9Ij18CECgdSDRnHFr3068",
+          "type": "function",
+          "function": {
+            "name": "land_at_target",
+            "arguments": "{\"placement_id\": \"p1\"}"
+          }
+        }
+      ],
+      "choice": "p1",
+      "error": null
+    }
+  }
+]

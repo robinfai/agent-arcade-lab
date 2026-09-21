@@ -1,0 +1,6 @@
+[submodule "vendor/kev"]
+	path = vendor/kev
+	url = https://github.com/jaredpalmer/kev.git
+[submodule "vendor/laya-mlx"]
+	path = vendor/laya-mlx
+	url = https://github.com/mizorewww/laya-mlx.git

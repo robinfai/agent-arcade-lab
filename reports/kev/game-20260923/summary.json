@@ -1,0 +1,20 @@
+{
+  "assisted": true,
+  "model": "jaredpalmer/kev-4b",
+  "thinking": false,
+  "seed": 20260923,
+  "rules": "step-gravity-no-kicks",
+  "max_actions_per_turn": 8,
+  "score": 100,
+  "lines": 1,
+  "locked_pieces": 16,
+  "actions": 177,
+  "turns": 31,
+  "model_calls": 16,
+  "invalid_plans": 0,
+  "total_tokens": 56649,
+  "elapsed_seconds": 163.353,
+  "mean_response_ms": 10205.630937500002,
+  "p95_response_ms": 15970.529,
+  "end_reason": "spawn_blocked"
+}

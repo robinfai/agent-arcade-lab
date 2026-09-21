@@ -1,0 +1,17 @@
+{
+  "before": {
+    "ready": true,
+    "model": "mlx-community/Qwen3.5-4B-4bit",
+    "backend": "mlx",
+    "load_ms": 1239.6065829670988
+  },
+  "response_model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "choice": "left",
+  "error": null,
+  "after": {
+    "ready": true,
+    "model": "mlx-community/Qwen3.5-0.8B-4bit",
+    "backend": "mlx",
+    "load_ms": 854.9346670042723
+  }
+}

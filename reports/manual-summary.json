@@ -1,0 +1,115 @@
+{
+  "seed": 20260921,
+  "steps": 114,
+  "lines": 29,
+  "score": 4300,
+  "next_piece_at_top_out": "L",
+  "verified_frames": 114,
+  "rejected_attempts": [
+    {
+      "after_step": 108,
+      "piece": "I",
+      "choice": "r1x0",
+      "reason": "J at step 108 blocked column 0; illegal move rejected; no piece placed"
+    }
+  ],
+  "hole_increases": [
+    {
+      "step": 23,
+      "piece": "L",
+      "action": "r3x7",
+      "holes_added": 1
+    },
+    {
+      "step": 37,
+      "piece": "T",
+      "action": "r0x2",
+      "holes_added": 1
+    },
+    {
+      "step": 40,
+      "piece": "J",
+      "action": "r1x5",
+      "holes_added": 1
+    },
+    {
+      "step": 41,
+      "piece": "S",
+      "action": "r0x0",
+      "holes_added": 5
+    },
+    {
+      "step": 48,
+      "piece": "T",
+      "action": "r1x3",
+      "holes_added": 1
+    },
+    {
+      "step": 58,
+      "piece": "S",
+      "action": "r1x8",
+      "holes_added": 1
+    },
+    {
+      "step": 62,
+      "piece": "L",
+      "action": "r1x6",
+      "holes_added": 1
+    },
+    {
+      "step": 74,
+      "piece": "L",
+      "action": "r1x7",
+      "holes_added": 1
+    },
+    {
+      "step": 83,
+      "piece": "O",
+      "action": "r0x8",
+      "holes_added": 1
+    },
+    {
+      "step": 88,
+      "piece": "S",
+      "action": "r1x8",
+      "holes_added": 1
+    },
+    {
+      "step": 94,
+      "piece": "O",
+      "action": "r0x1",
+      "holes_added": 2
+    },
+    {
+      "step": 100,
+      "piece": "Z",
+      "action": "r0x6",
+      "holes_added": 1
+    },
+    {
+      "step": 107,
+      "piece": "S",
+      "action": "r0x2",
+      "holes_added": 1
+    },
+    {
+      "step": 108,
+      "piece": "J",
+      "action": "r2x0",
+      "holes_added": 9
+    },
+    {
+      "step": 110,
+      "piece": "Z",
+      "action": "r1x8",
+      "holes_added": 2
+    }
+  ],
+  "line_clear_histogram": {
+    "0": 99,
+    "1": 5,
+    "2": 6,
+    "3": 4,
+    "4": 0
+  }
+}

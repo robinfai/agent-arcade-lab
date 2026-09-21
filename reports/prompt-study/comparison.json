@@ -1,0 +1,117 @@
+{
+  "winner": "priority",
+  "original": {
+    "steps": 254,
+    "mean_steps": 25.4,
+    "lines": 1,
+    "mean_ms": 562.5429409448819,
+    "p50_ms": 476.7685,
+    "p95_ms": 1160.124,
+    "agreement": 0.20078740157480315,
+    "dominated": 0.7086614173228346,
+    "regret": 3.310008007874016,
+    "capped_games": 0
+  },
+  "new": {
+    "steps": 282,
+    "mean_steps": 28.2,
+    "lines": 6,
+    "mean_ms": 692.6835354609929,
+    "p50_ms": 515.356,
+    "p95_ms": 1384.476049999999,
+    "agreement": 0.22340425531914893,
+    "dominated": 0.6666666666666666,
+    "regret": 2.7506841702127662,
+    "capped_games": 0
+  },
+  "steps_change_pct": 11.023622047244096,
+  "paired_games": [
+    {
+      "seed": 20260920,
+      "old_steps": 24,
+      "new_steps": 27,
+      "old_lines": 0,
+      "new_lines": 2
+    },
+    {
+      "seed": 20260921,
+      "old_steps": 27,
+      "new_steps": 28,
+      "old_lines": 1,
+      "new_lines": 1
+    },
+    {
+      "seed": 20260922,
+      "old_steps": 25,
+      "new_steps": 19,
+      "old_lines": 0,
+      "new_lines": 0
+    },
+    {
+      "seed": 20260923,
+      "old_steps": 27,
+      "new_steps": 28,
+      "old_lines": 0,
+      "new_lines": 1
+    },
+    {
+      "seed": 20260924,
+      "old_steps": 27,
+      "new_steps": 36,
+      "old_lines": 0,
+      "new_lines": 1
+    },
+    {
+      "seed": 20260925,
+      "old_steps": 26,
+      "new_steps": 25,
+      "old_lines": 0,
+      "new_lines": 0
+    },
+    {
+      "seed": 20260926,
+      "old_steps": 30,
+      "new_steps": 28,
+      "old_lines": 0,
+      "new_lines": 0
+    },
+    {
+      "seed": 20260927,
+      "old_steps": 25,
+      "new_steps": 26,
+      "old_lines": 0,
+      "new_lines": 0
+    },
+    {
+      "seed": 20260928,
+      "old_steps": 20,
+      "new_steps": 33,
+      "old_lines": 0,
+      "new_lines": 1
+    },
+    {
+      "seed": 20260929,
+      "old_steps": 23,
+      "new_steps": 32,
+      "old_lines": 0,
+      "new_lines": 0
+    }
+  ],
+  "paired_step_wins": 7,
+  "paired_step_losses": 3,
+  "paired_step_ties": 0,
+  "unseen_screen_seeds": {
+    "old_steps": 178,
+    "new_steps": 208,
+    "old_lines": 0,
+    "new_lines": 3
+  },
+  "first_option_rate": {
+    "original": 0.7083333333333334,
+    "priority": 0.625,
+    "weighted": 1.0,
+    "examples": 0.6666666666666666,
+    "short": 1.0,
+    "chinese": 0.9583333333333334
+  }
+}

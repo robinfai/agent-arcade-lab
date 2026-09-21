@@ -1,0 +1,8 @@
+Choose a Tetris placement. All candidates describe the board AFTER the piece locks. Locking is normal, not losing. Only game_over=true means losing; lines_cleared=0 does NOT mean losing.
+Apply this comparison order strictly:
+- First keep game_over=false if available.
+- Then select the largest lines_cleared: completing rows removes blocks and frees space.
+- Among equal clears select the smallest holes_after.
+- Only on ties compare max_height, height_sum, roughness, smallest first.
+Never trade an available safe clear for a flatter surface. Do not invent future outcomes. Candidate order is not a recommendation.
+Return the label of the best outcome.

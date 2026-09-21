@@ -1,0 +1,23 @@
+{
+  "assisted": true,
+  "uniform_assistance": true,
+  "execution_correction": true,
+  "corrections": 0,
+  "model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "thinking": false,
+  "seed": 20260921,
+  "rules": "step-gravity-no-kicks",
+  "max_actions_per_turn": 8,
+  "score": 1100,
+  "lines": 10,
+  "locked_pieces": 42,
+  "actions": 603,
+  "turns": 93,
+  "model_calls": 42,
+  "invalid_plans": 0,
+  "total_tokens": 46560,
+  "elapsed_seconds": 16.724,
+  "mean_response_ms": 394.93423809523813,
+  "p95_response_ms": 488.114,
+  "end_reason": "action_cap"
+}

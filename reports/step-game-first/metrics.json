@@ -1,0 +1,63 @@
+{
+  "actions": 63,
+  "locked_pieces": 7,
+  "lines": 0,
+  "mean_http_ms": 163.19031746031746,
+  "total_http_seconds": 10.28099,
+  "action_counts": {
+    "down": 58,
+    "rotate": 5
+  },
+  "locks": [
+    {
+      "action": 17,
+      "piece": "I",
+      "column": 3,
+      "rotation": 0,
+      "choice": "rotate"
+    },
+    {
+      "action": 31,
+      "piece": "T",
+      "column": 3,
+      "rotation": 0,
+      "choice": "rotate"
+    },
+    {
+      "action": 43,
+      "piece": "S",
+      "column": 3,
+      "rotation": 0,
+      "choice": "down"
+    },
+    {
+      "action": 52,
+      "piece": "L",
+      "column": 3,
+      "rotation": 0,
+      "choice": "rotate"
+    },
+    {
+      "action": 58,
+      "piece": "J",
+      "column": 3,
+      "rotation": 0,
+      "choice": "rotate"
+    },
+    {
+      "action": 62,
+      "piece": "O",
+      "column": 3,
+      "rotation": 0,
+      "choice": "down"
+    },
+    {
+      "action": 63,
+      "piece": "Z",
+      "column": 3,
+      "rotation": 0,
+      "choice": "rotate"
+    }
+  ],
+  "next_piece": "O"
+}

@@ -1,0 +1,543 @@
+[
+  {
+    "name": "fill_bottom_left",
+    "expected": 1,
+    "outcome": {
+      "column": 0,
+      "rotation": 0,
+      "row": 19,
+      "lines_cleared": 1,
+      "holes_after": 0,
+      "height_sum": 0,
+      "max_height": 0,
+      "roughness": 0,
+      "game_over": false
+    },
+    "response": {
+      "model": "aac6fef/laya-multilingual-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.1653,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p16",
+          "probabilities": {
+            "p0": 0.1377,
+            "p1": 0.1834,
+            "p2": 0.0614,
+            "p3": 0.1178,
+            "p4": 0.0267,
+            "p5": 0.0341,
+            "p6": 0.0203,
+            "p7": 0.0197,
+            "p8": 0.0199,
+            "p9": 0.0215,
+            "p10": 0.0213,
+            "p11": 0.0215,
+            "p12": 0.0198,
+            "p13": 0.0199,
+            "p14": 0.0212,
+            "p15": 0.0236,
+            "p16": 0.2301
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 325,
+        "output_tokens": 0
+      },
+      "choice": "p16",
+      "confidence": 0.1653,
+      "probabilities": {
+        "p0": 0.1377,
+        "p1": 0.1834,
+        "p2": 0.0614,
+        "p3": 0.1178,
+        "p4": 0.0267,
+        "p5": 0.0341,
+        "p6": 0.0203,
+        "p7": 0.0197,
+        "p8": 0.0199,
+        "p9": 0.0215,
+        "p10": 0.0213,
+        "p11": 0.0215,
+        "p12": 0.0198,
+        "p13": 0.0199,
+        "p14": 0.0212,
+        "p15": 0.0236,
+        "p16": 0.2301
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 54.42575004417449,
+      "generated_tokens": 0,
+      "prompt_variant": "community",
+      "input_budget": {
+        "input_tokens": 325,
+        "options": 17,
+        "max_option_tokens": 15,
+        "head_max_len": 266,
+        "max_len": 325,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Fill all 10 cells in a row to clear it and score. Program labels compare survival, immediate clears, holes, then stack height. Best means best predicted one-piece result, not guaranteed future survival. No execution correction. Safe move available: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move. Clear rows and avoid trapped holes. Avoid game over.",
+            "criteria": {
+              "p0": "Safe now. Misses a better immediate row clear.",
+              "p1": "Safe now. Misses a better immediate row clear.",
+              "p2": "Safe now. Misses a better immediate row clear.",
+              "p3": "Safe now. Misses a better immediate row clear.",
+              "p4": "Safe now. Misses a better immediate row clear.",
+              "p5": "Safe now. Misses a better immediate row clear.",
+              "p6": "Safe now. Misses a better immediate row clear.",
+              "p7": "Safe now. Misses a better immediate row clear.",
+              "p8": "Safe now. Misses a better immediate row clear.",
+              "p9": "Safe now. Misses a better immediate row clear.",
+              "p10": "Safe now. Misses a better immediate row clear.",
+              "p11": "Safe now. Misses a better immediate row clear.",
+              "p12": "Safe now. Misses a better immediate row clear.",
+              "p13": "Safe now. Misses a better immediate row clear.",
+              "p14": "Safe now. Misses a better immediate row clear.",
+              "p15": "Safe now. Misses a better immediate row clear.",
+              "p16": "Safe. Best move. Clear 1 rows now."
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "fill_bottom_right",
+    "expected": 1,
+    "outcome": {
+      "column": 6,
+      "rotation": 0,
+      "row": 19,
+      "lines_cleared": 1,
+      "holes_after": 0,
+      "height_sum": 0,
+      "max_height": 0,
+      "roughness": 0,
+      "game_over": false
+    },
+    "response": {
+      "model": "aac6fef/laya-multilingual-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.1653,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p16",
+          "probabilities": {
+            "p0": 0.1377,
+            "p1": 0.1834,
+            "p2": 0.0614,
+            "p3": 0.1178,
+            "p4": 0.0267,
+            "p5": 0.0341,
+            "p6": 0.0203,
+            "p7": 0.0197,
+            "p8": 0.0199,
+            "p9": 0.0215,
+            "p10": 0.0213,
+            "p11": 0.0215,
+            "p12": 0.0198,
+            "p13": 0.0199,
+            "p14": 0.0212,
+            "p15": 0.0236,
+            "p16": 0.2301
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 325,
+        "output_tokens": 0
+      },
+      "choice": "p16",
+      "confidence": 0.1653,
+      "probabilities": {
+        "p0": 0.1377,
+        "p1": 0.1834,
+        "p2": 0.0614,
+        "p3": 0.1178,
+        "p4": 0.0267,
+        "p5": 0.0341,
+        "p6": 0.0203,
+        "p7": 0.0197,
+        "p8": 0.0199,
+        "p9": 0.0215,
+        "p10": 0.0213,
+        "p11": 0.0215,
+        "p12": 0.0198,
+        "p13": 0.0199,
+        "p14": 0.0212,
+        "p15": 0.0236,
+        "p16": 0.2301
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 32.29054098483175,
+      "generated_tokens": 0,
+      "prompt_variant": "community",
+      "input_budget": {
+        "input_tokens": 325,
+        "options": 17,
+        "max_option_tokens": 15,
+        "head_max_len": 266,
+        "max_len": 325,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Fill all 10 cells in a row to clear it and score. Program labels compare survival, immediate clears, holes, then stack height. Best means best predicted one-piece result, not guaranteed future survival. No execution correction. Safe move available: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move. Clear rows and avoid trapped holes. Avoid game over.",
+            "criteria": {
+              "p0": "Safe now. Misses a better immediate row clear.",
+              "p1": "Safe now. Misses a better immediate row clear.",
+              "p2": "Safe now. Misses a better immediate row clear.",
+              "p3": "Safe now. Misses a better immediate row clear.",
+              "p4": "Safe now. Misses a better immediate row clear.",
+              "p5": "Safe now. Misses a better immediate row clear.",
+              "p6": "Safe now. Misses a better immediate row clear.",
+              "p7": "Safe now. Misses a better immediate row clear.",
+              "p8": "Safe now. Misses a better immediate row clear.",
+              "p9": "Safe now. Misses a better immediate row clear.",
+              "p10": "Safe now. Misses a better immediate row clear.",
+              "p11": "Safe now. Misses a better immediate row clear.",
+              "p12": "Safe now. Misses a better immediate row clear.",
+              "p13": "Safe now. Misses a better immediate row clear.",
+              "p14": "Safe now. Misses a better immediate row clear.",
+              "p15": "Safe now. Misses a better immediate row clear.",
+              "p16": "Safe. Best move. Clear 1 rows now."
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "square_completes_two_rows",
+    "expected": 2,
+    "outcome": {
+      "column": 4,
+      "rotation": 0,
+      "row": 18,
+      "lines_cleared": 2,
+      "holes_after": 0,
+      "height_sum": 0,
+      "max_height": 0,
+      "roughness": 0,
+      "game_over": false
+    },
+    "response": {
+      "model": "aac6fef/laya-multilingual-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.4397,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p8",
+          "probabilities": {
+            "p0": 0.0461,
+            "p1": 0.0773,
+            "p2": 0.0248,
+            "p3": 0.0529,
+            "p4": 0.0357,
+            "p5": 0.035,
+            "p6": 0.0237,
+            "p7": 0.0149,
+            "p8": 0.6895
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 206,
+        "output_tokens": 0
+      },
+      "choice": "p8",
+      "confidence": 0.4397,
+      "probabilities": {
+        "p0": 0.0461,
+        "p1": 0.0773,
+        "p2": 0.0248,
+        "p3": 0.0529,
+        "p4": 0.0357,
+        "p5": 0.035,
+        "p6": 0.0237,
+        "p7": 0.0149,
+        "p8": 0.6895
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 20.367291988804936,
+      "generated_tokens": 0,
+      "prompt_variant": "community",
+      "input_budget": {
+        "input_tokens": 206,
+        "options": 9,
+        "max_option_tokens": 14,
+        "head_max_len": 147,
+        "max_len": 206,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Fill all 10 cells in a row to clear it and score. Program labels compare survival, immediate clears, holes, then stack height. Best means best predicted one-piece result, not guaranteed future survival. No execution correction. Safe move available: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move. Clear rows and avoid trapped holes. Avoid game over.",
+            "criteria": {
+              "p0": "Safe now. Misses a better immediate row clear.",
+              "p1": "Safe now. Misses a better immediate row clear.",
+              "p2": "Safe now. Misses a better immediate row clear.",
+              "p3": "Safe now. Misses a better immediate row clear.",
+              "p4": "Safe now. Misses a better immediate row clear.",
+              "p5": "Safe now. Misses a better immediate row clear.",
+              "p6": "Safe now. Misses a better immediate row clear.",
+              "p7": "Safe now. Misses a better immediate row clear.",
+              "p8": "Safe. Best move. Clear 2 rows now."
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "rotate_into_four_row_well",
+    "expected": 4,
+    "outcome": {
+      "column": 2,
+      "rotation": 1,
+      "row": 16,
+      "lines_cleared": 4,
+      "holes_after": 0,
+      "height_sum": 0,
+      "max_height": 0,
+      "roughness": 0,
+      "game_over": false
+    },
+    "response": {
+      "model": "aac6fef/laya-multilingual-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.2354,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p16",
+          "probabilities": {
+            "p0": 0.1332,
+            "p1": 0.1857,
+            "p2": 0.0651,
+            "p3": 0.098,
+            "p4": 0.0214,
+            "p5": 0.0287,
+            "p6": 0.0215,
+            "p7": 0.0125,
+            "p8": 0.0131,
+            "p9": 0.0107,
+            "p10": 0.0201,
+            "p11": 0.0128,
+            "p12": 0.0124,
+            "p13": 0.013,
+            "p14": 0.0107,
+            "p15": 0.0263,
+            "p16": 0.3149
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 325,
+        "output_tokens": 0
+      },
+      "choice": "p16",
+      "confidence": 0.2354,
+      "probabilities": {
+        "p0": 0.1332,
+        "p1": 0.1857,
+        "p2": 0.0651,
+        "p3": 0.098,
+        "p4": 0.0214,
+        "p5": 0.0287,
+        "p6": 0.0215,
+        "p7": 0.0125,
+        "p8": 0.0131,
+        "p9": 0.0107,
+        "p10": 0.0201,
+        "p11": 0.0128,
+        "p12": 0.0124,
+        "p13": 0.013,
+        "p14": 0.0107,
+        "p15": 0.0263,
+        "p16": 0.3149
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 29.03274999698624,
+      "generated_tokens": 0,
+      "prompt_variant": "community",
+      "input_budget": {
+        "input_tokens": 325,
+        "options": 17,
+        "max_option_tokens": 15,
+        "head_max_len": 266,
+        "max_len": 325,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Fill all 10 cells in a row to clear it and score. Program labels compare survival, immediate clears, holes, then stack height. Best means best predicted one-piece result, not guaranteed future survival. No execution correction. Safe move available: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move. Clear rows and avoid trapped holes. Avoid game over.",
+            "criteria": {
+              "p0": "Safe now. Misses a better immediate row clear.",
+              "p1": "Safe now. Misses a better immediate row clear.",
+              "p2": "Safe now. Misses a better immediate row clear.",
+              "p3": "Safe now. Misses a better immediate row clear.",
+              "p4": "Safe now. Misses a better immediate row clear.",
+              "p5": "Safe now. Misses a better immediate row clear.",
+              "p6": "Safe now. Misses a better immediate row clear.",
+              "p7": "Safe now. Misses a better immediate row clear.",
+              "p8": "Safe now. Misses a better immediate row clear.",
+              "p9": "Safe now. Misses a better immediate row clear.",
+              "p10": "Safe now. Misses a better immediate row clear.",
+              "p11": "Safe now. Misses a better immediate row clear.",
+              "p12": "Safe now. Misses a better immediate row clear.",
+              "p13": "Safe now. Misses a better immediate row clear.",
+              "p14": "Safe now. Misses a better immediate row clear.",
+              "p15": "Safe now. Misses a better immediate row clear.",
+              "p16": "Safe. Best move. Clear 4 rows now."
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "rotate_and_move_right_for_three_rows",
+    "expected": 3,
+    "outcome": {
+      "column": 7,
+      "rotation": 1,
+      "row": 16,
+      "lines_cleared": 3,
+      "holes_after": 0,
+      "height_sum": 1,
+      "max_height": 1,
+      "roughness": 2,
+      "game_over": false
+    },
+    "response": {
+      "model": "aac6fef/laya-multilingual-mlx",
+      "answers": {
+        "move": {
+          "type": "choice",
+          "confidence": 0.212,
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "p16",
+          "probabilities": {
+            "p0": 0.1264,
+            "p1": 0.18,
+            "p2": 0.0605,
+            "p3": 0.0934,
+            "p4": 0.0253,
+            "p5": 0.0382,
+            "p6": 0.0228,
+            "p7": 0.0144,
+            "p8": 0.0143,
+            "p9": 0.0141,
+            "p10": 0.019,
+            "p11": 0.0144,
+            "p12": 0.0144,
+            "p13": 0.0195,
+            "p14": 0.0142,
+            "p15": 0.0238,
+            "p16": 0.3054
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 325,
+        "output_tokens": 0
+      },
+      "choice": "p16",
+      "confidence": 0.212,
+      "probabilities": {
+        "p0": 0.1264,
+        "p1": 0.18,
+        "p2": 0.0605,
+        "p3": 0.0934,
+        "p4": 0.0253,
+        "p5": 0.0382,
+        "p6": 0.0228,
+        "p7": 0.0144,
+        "p8": 0.0143,
+        "p9": 0.0141,
+        "p10": 0.019,
+        "p11": 0.0144,
+        "p12": 0.0144,
+        "p13": 0.0195,
+        "p14": 0.0142,
+        "p15": 0.0238,
+        "p16": 0.3054
+      },
+      "thinking": false,
+      "error": null,
+      "latency_ms": 29.90062499884516,
+      "generated_tokens": 0,
+      "prompt_variant": "community",
+      "input_budget": {
+        "input_tokens": 325,
+        "options": 17,
+        "max_option_tokens": 15,
+        "head_max_len": 266,
+        "max_len": 325,
+        "truncated": false
+      },
+      "model_input": {
+        "state": "Tetris. Fill all 10 cells in a row to clear it and score. Program labels compare survival, immediate clears, holes, then stack height. Best means best predicted one-piece result, not guaranteed future survival. No execution correction. Safe move available: yes.",
+        "questions": {
+          "move": {
+            "type": "choice",
+            "instructions": "Choose the best safe move. Clear rows and avoid trapped holes. Avoid game over.",
+            "criteria": {
+              "p0": "Safe now. Misses a better immediate row clear.",
+              "p1": "Safe now. Misses a better immediate row clear.",
+              "p2": "Safe now. Misses a better immediate row clear.",
+              "p3": "Safe now. Misses a better immediate row clear.",
+              "p4": "Safe now. Misses a better immediate row clear.",
+              "p5": "Safe now. Misses a better immediate row clear.",
+              "p6": "Safe now. Misses a better immediate row clear.",
+              "p7": "Safe now. Misses a better immediate row clear.",
+              "p8": "Safe now. Misses a better immediate row clear.",
+              "p9": "Safe now. Misses a better immediate row clear.",
+              "p10": "Safe now. Misses a better immediate row clear.",
+              "p11": "Safe now. Misses a better immediate row clear.",
+              "p12": "Safe now. Misses a better immediate row clear.",
+              "p13": "Safe now. Misses a better immediate row clear.",
+              "p14": "Safe now. Misses a better immediate row clear.",
+              "p15": "Safe now. Misses a better immediate row clear.",
+              "p16": "Safe. Best move. Clear 3 rows now."
+            }
+          }
+        }
+      }
+    }
+  }
+]

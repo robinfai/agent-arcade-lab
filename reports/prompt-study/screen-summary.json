@@ -1,0 +1,49 @@
+{
+  "selection": "minimum mean heuristic regret over 24 fixed historical states; tie break dominated rate",
+  "winner": "priority",
+  "results": {
+    "original": {
+      "n": 24,
+      "agreement": 0.20833333333333334,
+      "dominated": 0.6666666666666666,
+      "regret": 3.328832583333334,
+      "mean_ms": 666.86542549481
+    },
+    "priority": {
+      "n": 24,
+      "agreement": 0.20833333333333334,
+      "dominated": 0.6666666666666666,
+      "regret": 3.5170810416666676,
+      "mean_ms": 717.9896075346429
+    },
+    "weighted": {
+      "n": 24,
+      "agreement": 0.16666666666666666,
+      "dominated": 0.7083333333333334,
+      "regret": 5.733707250000001,
+      "mean_ms": 767.4274548310981
+    },
+    "examples": {
+      "n": 24,
+      "agreement": 0.20833333333333334,
+      "dominated": 0.6666666666666666,
+      "regret": 4.882384833333334,
+      "mean_ms": 713.5426597136151
+    },
+    "short": {
+      "n": 24,
+      "agreement": 0.16666666666666666,
+      "dominated": 0.7083333333333334,
+      "regret": 5.733707250000001,
+      "mean_ms": 704.6315382055278
+    },
+    "chinese": {
+      "n": 24,
+      "agreement": 0.16666666666666666,
+      "dominated": 0.7083333333333334,
+      "regret": 5.676856166666668,
+      "mean_ms": 900.6412829621695
+    }
+  },
+  "fixtures": "games 1-3, steps 1,4,7,10,13,16,19,22. Shared identical states/options/order; only instructions changed."
+}

@@ -1,0 +1,6 @@
+mlx-lm
+fastapi
+uvicorn
+httpx
+pytest
+typesafe-sdk

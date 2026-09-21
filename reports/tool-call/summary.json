@@ -1,0 +1,34 @@
+{
+  "original": {
+    "steps": 254,
+    "lines": 1,
+    "mean_steps": 25.4,
+    "mean_http_ms": 562.5429409448819,
+    "dominated_pct": 70.86614173228347,
+    "heuristic_agreement_pct": 20.078740157480315
+  },
+  "priority": {
+    "steps": 282,
+    "lines": 6,
+    "mean_steps": 28.2,
+    "mean_http_ms": 692.6835354609929,
+    "dominated_pct": 66.66666666666666,
+    "heuristic_agreement_pct": 22.340425531914892
+  },
+  "tool_call": {
+    "steps": 281,
+    "lines": 3,
+    "mean_steps": 28.1,
+    "mean_http_ms": 674.7028398576513,
+    "dominated_pct": 62.63345195729537,
+    "heuristic_agreement_pct": 22.77580071174377
+  },
+  "tool_protocol": {
+    "attempts": 281,
+    "valid": 281,
+    "failed": 0,
+    "mean_output_tokens": 31,
+    "mean_http_ms_all_attempts": 674.7028398576513,
+    "first_option_pct": 22.064056939501782
+  }
+}

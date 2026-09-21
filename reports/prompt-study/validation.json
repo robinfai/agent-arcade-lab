@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "requests": 144,
+  "per_variant": {
+    "original": 24,
+    "priority": 24,
+    "weighted": 24,
+    "examples": 24,
+    "short": 24,
+    "chinese": 24
+  },
+  "same_state_and_ordered_candidates": true,
+  "probabilities_valid": true,
+  "first_option_rate": {
+    "original": 0.7083333333333334,
+    "priority": 0.625,
+    "weighted": 1.0,
+    "examples": 0.6666666666666666,
+    "short": 1.0,
+    "chinese": 0.9583333333333334
+  }
+}

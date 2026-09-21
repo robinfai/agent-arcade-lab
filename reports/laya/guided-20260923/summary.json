@@ -1,0 +1,20 @@
+{
+  "assisted": true,
+  "model": "aac6fef/laya-mlx",
+  "thinking": false,
+  "seed": 20260923,
+  "rules": "step-gravity-no-kicks",
+  "max_actions_per_turn": 8,
+  "score": 0,
+  "lines": 0,
+  "locked_pieces": 10,
+  "actions": 108,
+  "turns": 19,
+  "model_calls": 10,
+  "invalid_plans": 0,
+  "total_tokens": 7200,
+  "elapsed_seconds": 1.432,
+  "mean_response_ms": 136.474,
+  "p95_response_ms": 219.378,
+  "end_reason": "spawn_blocked"
+}

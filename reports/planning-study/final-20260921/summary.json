@@ -1,0 +1,20 @@
+{
+  "assisted": true,
+  "model": "mlx-community/Qwen3.5-4B-4bit",
+  "thinking": false,
+  "seed": 20260921,
+  "rules": "step-gravity-no-kicks",
+  "max_actions_per_turn": 8,
+  "score": 300,
+  "lines": 3,
+  "locked_pieces": 27,
+  "actions": 365,
+  "turns": 59,
+  "model_calls": 27,
+  "invalid_plans": 0,
+  "total_tokens": 54635,
+  "elapsed_seconds": 148.734,
+  "mean_response_ms": 5504.468666666666,
+  "p95_response_ms": 9194.178,
+  "end_reason": "spawn_blocked"
+}

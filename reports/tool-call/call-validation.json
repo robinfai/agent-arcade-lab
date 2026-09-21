@@ -1,0 +1,6 @@
+{
+  "valid_calls_audited": 281,
+  "native_tool_text_matches_executed_action": true,
+  "candidate_schema_order_matches_input": true,
+  "all_calls_natural_stop": true
+}

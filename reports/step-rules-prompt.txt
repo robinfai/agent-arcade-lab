@@ -1,0 +1,37 @@
+You control one active tetromino in a discrete-step Tetris game.
+
+OBJECTIVE: WHAT COUNTS AS SUCCESS OR FAILURE
+- There is no fixed win screen or finish line. Success means earning as many points as possible by clearing full rows before the game eventually ends.
+- ONLY clearing rows earns points: 1/2/3/4 rows at one lock earn 100/300/500/800 points. More lifetime points is better; clearing more rows and preserving space helps you keep earning points.
+- A blocked spawn is GAME OVER: a failure, not a victory or a task-completion reward. Do not try to end the game early. Given a choice between immediate game over with zero points and surviving with an opportunity to clear rows, prefer surviving and clearing rows.
+- Moving, rotating, falling and locking pieces earn ZERO points by themselves. Taking more actions, placing more pieces without clearing rows, and finishing faster are not goals.
+- Choose actions that make progress toward row completion while keeping future pieces playable. Move sideways or rotate when needed; do not stack pieces in the spawn columns merely because down is legal.
+- Survival supports scoring, but do not merely postpone a loss without trying to clear rows. Compare the actual board consequences, not just whether an action is allowed.
+
+
+BOARD AND PIECES
+- The board has 10 columns (0..9, left to right) and 20 rows (0..19, top to bottom). Increasing row means moving DOWN.
+- board contains ONLY locked cells: "." is empty and "#" is occupied. The active falling piece is NOT drawn in board.
+- active.column and active.row are the origin of the active piece. Each [dx,dy] in active.cells occupies board[row+dy][column+dx].
+- rotations lists the unique clockwise orientations, normalized to a top-left origin. active.rotation indexes this list. Use these exact cells; do not assume standard SRS rotation offsets.
+- next_piece is the next piece after this one locks. Pieces come from shuffled bags containing I, O, T, S, Z, J, L once each.
+
+ONE STEP: INPUT FIRST, THEN GRAVITY ONCE
+1. Choose ONE offered legal action. left: column minus 1. right: column plus 1. rotate: advance rotation by 1 modulo rotations.length, keeping the origin unchanged. down: keep column and rotation unchanged. For O, rotation has no shape effect.
+2. After that input, the game attempts to move the ENTIRE active piece DOWN exactly ONE row. This happens for left, right, rotate AND down; down does not give an extra descent.
+3. If the descent fits, the piece moves one row and remains active. Even if it now touches the floor or stack, it is not locked until a subsequent action has a blocked descent. You may still move or rotate on that subsequent action if it fits.
+4. If the descent is blocked by the floor or locked cells, the whole piece locks at its position AFTER the input. Its individual cells never fall separately.
+- Every cell must stay inside the board and avoid locked cells. Invalid inputs are rejected without advancing gravity; they are excluded from the offered options.
+- No automatic time-based falling, hard drop, hold, counterclockwise action, wall kicks or extra lock delay. Rotation does not shift the piece to avoid a collision. An overhang can be entered sideways only when every cell and that movement fit.
+
+LOCK, CLEAR AND END
+- After locking, each fully occupied row of 10 cells is removed. Rows above it shift down and empty rows are inserted at the top. Remaining fragments do not fall independently.
+- Clearing 1/2/3/4 rows in one lock scores 100/300/500/800 points.
+- The next piece spawns at column 3, row 0, rotation 0. If it overlaps locked cells there, the game ends even if space remains elsewhere.
+
+HOW TO READ THE OPTIONS AND DECIDE
+- column_after_input and rotation_after_input describe the input result. row_after_step includes the single gravity attempt. locks_piece tells whether THIS action will lock the current piece.
+- These are immediate outcomes, not final landing-quality scores or recommendations.
+- Choose a useful landing region, then move toward it while there is still room. left/right also make downward progress. Repeated down keeps the current column and can stack every piece in the center; it is not automatically the safest action.
+- Consider the board and next_piece, avoid trapping empty cells below blocks, preserve reachable gaps, and keep the stack low. A legal action can still be strategically bad.
+Return only the option label corresponding to your chosen action, as requested by the surrounding choice interface.

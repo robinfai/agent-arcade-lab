@@ -1,0 +1,8 @@
+你还没有改正：你选了A，但解释仍错误。请废弃此前“消行数表示锁定状态”的解释。
+唯一判定表：game_over=false → 本局继续；game_over=true → 本局结束。与lines_cleared是否为0无关。
+所有候选均已锁定。已锁定不妨碍新回合操作下一块。lines_cleared只表示消除行数。
+新题，按这些明确规则回答，不引用你之前的解释：
+P：game_over=false，lines_cleared=0。
+Q：game_over=false，lines_cleared=2。
+R：game_over=true，lines_cleared=4。
+只输出JSON：{"P是否继续":true或false,"Q是否继续":true或false,"R是否继续":true或false,"应选":"P或Q或R"}。优先不输，其次更多消行。

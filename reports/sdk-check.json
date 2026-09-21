@@ -1,0 +1,37 @@
+{
+  "model": "mlx-community/Qwen3.5-0.8B-4bit",
+  "usage": {
+    "input_tokens": 208,
+    "output_tokens": 0
+  },
+  "answers": {
+    "color": {
+      "type": "choice",
+      "choice": "red",
+      "confidence": 0.9982197995608781,
+      "probabilities": {
+        "red": 0.9998766183853149,
+        "blue": 0.00012339463864918798
+      }
+    },
+    "happy": {
+      "type": "noul",
+      "noul": 0.9324532747268677
+    },
+    "sentiment": {
+      "type": "score",
+      "score": 1.7464844584465027,
+      "confidence": 0.43420928343193865,
+      "legend": {
+        "0": "sad",
+        "1": "neutral",
+        "2": "happy"
+      },
+      "probabilities": {
+        "0": 0.039112579077482224,
+        "1": 0.17529040575027466,
+        "2": 0.785597026348114
+      }
+    }
+  }
+}

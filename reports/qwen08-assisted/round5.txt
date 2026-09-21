@@ -1,0 +1,7 @@
+第四轮仍有两处错误：R的game_over=true，必须是结束，不能继续；P和Q都继续，但Q消2行，P消0行，必须选Q。
+把规则压成两步：先删除game_over=true的候选，再在剩余候选中选lines_cleared最大的。不要自行改变字段含义。
+最后一道迁移题：K的game_over=false、lines_cleared=1；M的game_over=false、lines_cleared=3；N的game_over=true、lines_cleared=4。
+另外，动作数组[right,rotate,hard_drop,left]中，hard_drop锁定当前块，本数组立即停止；下一块在新回合操作。
+只回答两行：
+应选候选：____。
+本数组实际执行的动作：____。

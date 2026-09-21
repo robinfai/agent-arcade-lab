@@ -1,0 +1,3 @@
+纠正刚才容易混淆的一点：锁定是正常落块，不代表失败。锁定后会消行、生成下一块，并开始新的决策回合。只有下一块出生位置被占才是game_over。“不能继续下一块”仅指同一个动作数组在锁定处停止，不是整局结束。
+局面题：A：game_over=false，lines_cleared=1，holes_after=2，roughness=8。B：game_over=false，lines_cleared=0，holes_after=0，roughness=1。两者都不会立即输。当前策略规定优先即时消行，只有消行数相同时才比较洞和平整度。
+请回答：选A还是B，为什么？A落位锁定之后是否还能玩下一块？不超过100字。
