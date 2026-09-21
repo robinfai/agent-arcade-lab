@@ -1,4 +1,4 @@
-"""Native Qwen tool generation; no constrained decoding or heuristic fallback."""
+"""Native Qwen tool generation with opt-in constrained tool calls; no fallback."""
 import json
 import re
 import time
@@ -7,6 +7,50 @@ from fastapi.responses import JSONResponse
 from backend import server
 
 app = server.app
+
+def require_tool(value, tool_name):
+    if value == 'auto':
+        return False
+    if value == 'required' or value == {'type': 'function', 'function': {'name': tool_name}}:
+        return True
+    raise ValueError('tool_choice must be auto, required, or the function served by this endpoint')
+
+
+class ToolCallSampler:
+    """Greedy token selection within a trie of complete calls, not game rules.
+
+    All supplied labels remain available, including unsafe game actions.
+    Canonical tokenization restricts formatting as well as the argument enum.
+    """
+    def __init__(self, tokenizer, choices, tool_name, mx, max_tokens=128):
+        self.mx = mx
+        self.node = {}
+        for choice in choices:
+            if not isinstance(choice, str) or not choice.strip() or choice != choice.strip() or '<' in choice or '>' in choice:
+                raise ValueError('Constrained tool labels must be nonempty XML-safe strings without surrounding whitespace')
+            text = f'<tool_call>\n<function={tool_name}>\n<parameter=placement_id>\n{choice}\n</parameter>\n</function>\n</tool_call>'
+            tokens = tokenizer.encode(text, add_special_tokens=False)
+            if tokenizer.decode(tokens) != text or any(t in tokenizer.eos_token_ids for t in tokens):
+                raise ValueError('Tool call cannot be encoded losslessly')
+            if len(tokens) + 1 > max_tokens:
+                raise ValueError('Tool call exceeds output token budget')
+            node = self.node
+            for token in tokens:
+                node = node.setdefault(token, {})
+            for eos in tokenizer.eos_token_ids:
+                # MLX computes one token ahead before yielding EOS.
+                terminal = {}
+                terminal[eos] = terminal
+                node[eos] = terminal
+        if not self.node or not tokenizer.eos_token_ids:
+            raise ValueError('Tool constraints require choices and an EOS token')
+
+    def __call__(self, logprobs):
+        # No score/safety ranking: the model chooses among every allowed token.
+        allowed = self.mx.array(sorted(self.node))
+        token = allowed[self.mx.argmax(logprobs[0, allowed])].item()
+        self.node = self.node[token]
+        return self.mx.array([token])
 
 def parse_call(text, choices, tool_name='place_piece'):
     match = re.fullmatch(r'\s*<tool_call>\s*<function=' + re.escape(tool_name) + r'>\s*<parameter=placement_id>\s*([^<>]+?)\s*</parameter>\s*</function>\s*</tool_call>\s*', text)
@@ -38,7 +82,8 @@ def placement_decision(body, tool_name):
     from mlx_lm.sample_utils import make_sampler
     start = time.perf_counter()
     try:
-        server.validate(body)
+        constrained = require_tool(body.get('tool_choice', 'auto'), tool_name)
+        server.validate({k: v for k, v in body.items() if k != 'tool_choice'})
         if list(body['questions']) != ['move']:
             raise ValueError('Expected one move question')
         q = body['questions']['move']
@@ -62,7 +107,8 @@ def placement_decision(body, tool_name):
             generated = []
             finish_reason = 'length'
             output_tokens = 0
-            generator = generate_step(engine.mx.array(tokens), engine.model, max_tokens=128, prefill_step_size=256, sampler=make_sampler(temp=0))
+            sampler = ToolCallSampler(engine.tokenizer, choices, tool_name, engine.mx) if constrained else make_sampler(temp=0)
+            generator = generate_step(engine.mx.array(tokens), engine.model, max_tokens=128, prefill_step_size=256, sampler=sampler)
             try:
                 for token, _ in generator:
                     output_tokens += 1
@@ -79,6 +125,7 @@ def placement_decision(body, tool_name):
         try: choice = parse_call(raw,choices,tool_name)
         except ValueError as exc: choice,error = None,str(exc)
         result = {'model':server.MODEL,'choice':choice,'error':error,'raw_tool_call':raw,'tool_schema':tools,'messages':messages,'finish_reason':finish_reason,'usage':{'input_tokens':len(tokens),'output_tokens':output_tokens}}
+        result.update(tool_choice=body.get('tool_choice', 'auto'), constrained_decoding=constrained)
         return JSONResponse(result,headers={'X-Inference-Ms':f'{inference_ms:.3f}','X-Total-Ms':f'{(time.perf_counter()-start)*1000:.3f}'})
     except ValueError as exc: raise HTTPException(400,str(exc))
 

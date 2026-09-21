@@ -17,6 +17,11 @@ void main(List<String> args) {
           .whereType<File>()
           .where((f) => f.path.endsWith('/summary.json'))) {
     final summary = jsonDecode(file.readAsStringSync());
+    if (summary['max_steps'] is! int ||
+        summary['max_steps'] < 1 ||
+        summary['requests'] > summary['max_requests']) {
+      throw StateError('Invalid budget: ${file.path}');
+    }
     final tetris = StepTetris(summary['seed']);
     final snake = SnakeArena(summary['seed'], names: const ['model']);
     final cycle = SnakeCycle(snake);
@@ -120,6 +125,15 @@ void main(List<String> args) {
           summary['tool_output_name'] ?? 'place_piece',
         );
       }
+      if (summary['tool_choice'] == 'required') {
+        request['tool_choice'] = 'required';
+        same(row['response']['tool_choice'], 'required', 'tool choice');
+        same(
+          row['response']['constrained_decoding'],
+          true,
+          'format constraint',
+        );
+      }
       same(row['request'], request, 'request');
       same(row['corrected'], changed, 'correction');
       if (changed) corrections++;
@@ -150,7 +164,7 @@ void main(List<String> args) {
       same(row['accepted'], accepted, 'accepted');
       same(row['executed_actions'], actual, 'actions');
       same(row['after'], snapshot(), 'after');
-      if (steps() > 500) throw StateError('Cap exceeded');
+      if (steps() > summary['max_steps']) throw StateError('Cap exceeded');
     }
     same(summary['final_state'], snapshot(), 'final state');
     same(summary['steps'], steps(), 'steps');
@@ -158,7 +172,9 @@ void main(List<String> args) {
     same(summary['over'], over(), 'over');
     same(summary['corrections'], corrections, 'correction count');
     same(summary['invalid_actions'], invalid, 'invalid count');
-    if (summary['end_reason'] == 'step_cap') same(steps(), 500, 'exact cap');
+    if (summary['end_reason'] == 'step_cap') {
+      same(steps(), summary['max_steps'], 'exact cap');
+    }
     if (mode == 'program') {
       same(summary['requests'], 0, 'no inference');
     } else if (summary['end_reason'] != 'request_error') {
@@ -171,6 +187,6 @@ void main(List<String> args) {
     totalSteps += steps();
   }
   stdout.writeln(
-    'Verified $runs runs, $totalSteps actual actions; all capped at 500.',
+    'Verified $runs runs, $totalSteps actual actions; all within their recorded caps.',
   );
 }

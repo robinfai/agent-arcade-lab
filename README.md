@@ -10,6 +10,8 @@ JEV 现使用独立的无程序辅助路径：只接收原始棋盘和固定动�
 
 六种模型在两个游戏中的有无辅助单局对照、纯程序基线及贡献分析，见 [程序辅助对照报告](reports/assistance-comparison/README.md)。每局严格限制 500 步，协议中断与游戏死亡分别记录。
 
+最新的相同合法候选对照、2000 步结果与 JEV 断点恢复，见 [评测汇总和证据归档](reports/decision-study/README.md)。相关 [文章草稿](docs/articles/jev-game-benchmark/jev-game-benchmark.md) 分别讨论策略得分与服务可靠性。
+
 ## 快速开始
 
 已验证开发环境：Apple Silicon macOS、Flutter 3.44.0 / Dart 3.12.0、Python 3.12.13、uv。仅启动界面无需模型；本地 MLX 推理需要 Apple Silicon。

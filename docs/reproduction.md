@@ -127,7 +127,18 @@ dart run tool/benchmark_snake.dart 20260921 reports/local/snake-arena assist
 
 ## 6. 常见问题
 
-六种模型的双游戏辅助对照使用独立评测入口，完整配置、500 步限制和复现命令见 [对照实验方法](../reports/assistance-comparison/methodology.md)。它不会改变页面默认模型或辅助设置。
+历史六模型双游戏对照每局为 500 步，完整配置和复现命令见 [对照实验方法](../reports/assistance-comparison/methodology.md)。它不会改变页面默认模型或辅助设置。
+
+Qwen 的 `/v1/tool-decision`、`/v1/land-decision` 和 `/v1/snake-decision` 支持可选顶层字段 `tool_choice`：省略或 `"auto"` 保留自由生成；`"required"` 强制生成一次工具调用；也可传 `{"type":"function","function":{"name":"snake_move"}}` 指定该端点的函数。其他值（包括 `none`、不匹配的函数）返回错误。本项目仍采用 `state/questions` 请求格式，并非完整的 Chat Completions API。
+
+强制模式使用完整调用的 token 前缀树约束贪心解码，限定调用结构和候选枚举；所有候选（包括不安全方向）均保留，模型按自身 token 分数选择。它不按候选描述代选、不修补失败文本，也不重试。响应记录 `tool_choice`、`constrained_decoding` 和原始调用。该格式约束改变了解码条件，结果应单列，不能替换历史自由生成成绩。现有页面不自动启用；后端代码更新后需重启服务才生效。
+
+例如，启动上述 Qwen 服务后，单独验证 0.8B 的有辅助蛇局（固定 seed 20260921，最多 500 步/请求）：
+
+```bash
+dart run tool/benchmark_assistance.dart qwen08 snake assisted http://127.0.0.1:8765 reports/local/qwen08-required-new/qwen08/snake/assisted explicit-tool required-tool max-steps=500 max-seconds=900
+dart run tool/verify_assistance.dart reports/local/qwen08-required-new
+```
 
 JEV 的无程序辅助模式、500 步测试命令与离线核验见 [实测报告](../reports/jev-unassisted/README.md)。页面选 JEV 即使用原始动作模式；贪吃蛇本次测的是单模型独玩。新评测目录必须尚不存在，避免覆盖证据。
 
@@ -138,3 +149,29 @@ JEV 的无程序辅助模式、500 步测试命令与离线核验见 [实测报�
 - 端口被占用：用 `lsof -nP -iTCP:8769 -sTCP:LISTEN` 确认进程身份，再决定复用或改端口，不直接终止未知进程。
 - 内存不足：仅启动需要的模型。不要把缓存限制误认作系统硬内存上限。
 - 停止服务：在自己启动服务的终端按 Ctrl-C。
+
+## 7. 2000 步、多种子的模型增益验证
+
+`tool/benchmark_assistance.dart` 现在默认最多 2000 个实际动作及 2000 次请求，运行预算检查为 3600 秒；进行中的请求仍受客户端超时约束。可追加 `seed=20260922 max-steps=2000 max-seconds=3600`。预算必须为正整数，输出目录不能存在。旧报告保持不变；复现旧预算请显式传入 `max-steps=500 max-seconds=900`，或检出旧提交。离线核验器使用每份记录自己的预算。
+
+`tool/run_marginal.py` 对种子 20260921、20260922、20260923 分别运行纯程序、JEV、Laya、Qwen 0.8B 的两个游戏，共 24 局，仅比较有辅助系统与纯程序的增量。它不自动启动服务、切换模型或重试失败。先按本文启动 JEV（8770）、Laya（8769），并在独立端口启动包含强制格式实现的 Qwen：
+
+```sh
+HF_HOME="$PWD/.models" MLX_MODEL=mlx-community/Qwen3.5-0.8B-4bit \
+  MLX_REVISION=da28692b5f139cb0ec58a356b437486b7dac7462 \
+  .venv/bin/python -m uvicorn backend.tool_call:app --host 127.0.0.1 --port 8776
+```
+
+另一个终端：
+
+```sh
+python3 tool/run_marginal.py --root reports/local/marginal-2000-new
+dart run tool/verify_assistance.dart reports/local/marginal-2000-new/runs
+python3 tool/summarize_marginal.py reports/local/marginal-2000-new
+```
+
+会实际调用云 API，最多 12000 次 JEV 请求（6 局各 2000 次；方块通常远少于该上限）。Qwen 固定为 `explicit-tool + required-tool`，不能与旧自由输出成绩直接混比。三条 JEV 种子任务并发，本地模型串行；延迟只能作运行记录，不能作为公平速度排名。保存原始轨迹、健康状态、源码快照和哈希。三种子结果只用于探索，不宣称统计显著性或无限存活。
+
+## 8. 去掉评价标签和纠错的决策增益实验
+
+新的 `decision-v1` 将随机、现有程序和模型放在共同合法候选与执行器上比较，模型看完整棋盘，候选不含评价，原始选择不纠错；另外独立打乱候选顺序与编号。每局仍最多 2000 步。它与此前辅助成绩属于不同协议，完整设计、命令、离线验证及待执行的真实矩阵见 [决策增益实验](experiments/decision-value.md)。使用 `tool/benchmark_decision.dart`、`tool/run_decision_matrix.py` 和 `tool/verify_decision.dart`，不要用旧核验器混读新 schema。

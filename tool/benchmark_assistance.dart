@@ -37,12 +37,23 @@ void requestToolOutput(
 }
 
 Future<void> main(List<String> args) async {
-  if (args.length != 5 && args.length != 6) {
+  if (args.length < 5 ||
+      args
+          .skip(5)
+          .any(
+            (a) =>
+                !['explicit-tool', 'required-tool'].contains(a) &&
+                !RegExp(r'^(seed|max-steps|max-seconds)=\d+$').hasMatch(a),
+          )) {
     throw ArgumentError(
       'MODEL GAME(raw tetris|snake) MODE(raw|assisted|program) URL OUTPUT',
     );
   }
-  final explicitTool = args.length == 6 && args[5] == 'explicit-tool';
+  final explicitTool = args.skip(5).contains('explicit-tool');
+  final requiredTool = args.skip(5).contains('required-tool');
+  if (requiredTool && !['qwen08', 'qwen4'].contains(args[0])) {
+    throw ArgumentError('required-tool is supported only by the Qwen backend');
+  }
   final label = args[0],
       kind = args[1],
       mode = args[2],
@@ -51,9 +62,20 @@ Future<void> main(List<String> args) async {
       !['raw', 'assisted', 'program'].contains(mode)) {
     throw ArgumentError('Invalid game/mode');
   }
+  int option(String name, int fallback) {
+    final values = args.skip(5).where((a) => a.startsWith('$name='));
+    if (values.length > 1) throw ArgumentError('Duplicate $name');
+    return values.isEmpty ? fallback : int.parse(values.single.split('=').last);
+  }
+
+  final seed = option('seed', 20260921);
+  final cap = option('max-steps', 2000);
+  final maxSeconds = option('max-seconds', 3600);
+  if (cap < 1 || maxSeconds < 1) {
+    throw ArgumentError('Budgets must be positive');
+  }
   if (dir.existsSync()) throw StateError('Refusing to overwrite ${dir.path}');
   dir.createSync(recursive: true);
-  const seed = 20260921, cap = 500;
   final endpoint = label == 'laya'
       ? '/v1/tool-decision?native=true'
       : label == 'qwen08' && kind == 'snake'
@@ -109,6 +131,7 @@ Future<void> main(List<String> args) async {
   File('${dir.path}/initial.json').writeAsStringSync(jsonEncode(state()));
   Future<Map<String, dynamic>> infer(Map<String, dynamic> req) async {
     requests++;
+    if (requiredTool) req['tool_choice'] = 'required';
     if (explicitTool && label.startsWith('qwen')) {
       requestToolOutput(req, toolName);
     }
@@ -127,7 +150,7 @@ Future<void> main(List<String> args) async {
 
   try {
     while (!over() && steps() < cap && requests < cap) {
-      if (timer.elapsed.inSeconds >= 900) {
+      if (timer.elapsed.inSeconds >= maxSeconds) {
         reason = 'time_cap';
         break;
       }
@@ -281,8 +304,9 @@ Future<void> main(List<String> args) async {
       'seed': seed,
       'max_steps': cap,
       'max_requests': cap,
-      'max_seconds': 900,
+      'max_seconds': maxSeconds,
       'explicit_tool_instruction': explicitTool,
+      'tool_choice': requiredTool ? 'required' : 'auto',
       'tool_output_name': toolName,
       'endpoint': endpoint,
       'started_at': started,
